@@ -10,22 +10,18 @@
       <input @click="updateSelectorValue()" type="radio" name="selector" value="music">Music
     </div>
 
-    <div class="nav">
-      <router-link to="/menu"><span class="item">ホーム</span></router-link>
-      <router-link to="/menu/gallery"><span class="item">ギャラリー</span></router-link>
-      <router-link to="/menu/settings"><span class="item">設定</span></router-link>
-      <router-link to="/"><span class="item">タイトル</span></router-link>
-    </div>
+    <navbar></navbar>
   </div>
 </template>
 
 <script>
+import Navbar from './Navbar'
 import Images from './Gallery/Images'
 import Music from './Gallery/Music'
 
 export default {
   name: 'gallery',
-  components: { Images, Music },
+  components: { Navbar, Images, Music },
   data() {
     return {
       selector: 'images',
@@ -46,18 +42,5 @@ export default {
 </script>
 
 <style>
-.gallery {
-  position: relative;
 
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-
-  width: 100%;
-  height: 100%;
-}
 </style>

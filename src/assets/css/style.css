@@ -6,12 +6,17 @@ a {
     text-decoration: none;
 }
 
-.nav {
-    position: absolute;
-    bottom: 1rem;
-    right: 0;
-}
+.menu, .gallery, .settings {
+    position: relative;
 
-    .item {
-        margin: 0 1rem;
-    }
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    width: 100%;
+    height: 100%;
+}
