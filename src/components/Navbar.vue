@@ -1,26 +1,26 @@
 <template>
-    <div class="nav">
-        <router-link to="/home"><span class="item">ホーム</span></router-link>
-        <router-link to="/gallery"><span class="item">ギャラリー</span></router-link>
-        <router-link to="/settings"><span class="item">設定</span></router-link>
-        <router-link to="/"><span class="item">タイトル</span></router-link>
-    </div>
+  <div class="nav">
+    <router-link to="/home"><span class="item">ホーム</span></router-link>
+    <router-link to="/gallery"><span class="item">ギャラリー</span></router-link>
+    <router-link to="/settings"><span class="item">設定</span></router-link>
+    <router-link to="/"><span class="item">タイトル</span></router-link>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'nav',
+  name: 'nav',
 }
 </script>
 
 <style>
 .nav {
-    position: absolute;
-    bottom: 1rem;
-    right: 0;
+  position: absolute;
+  bottom: 1rem;
+  right: 0;
 }
 
-    .item {
-        margin: 0 1rem;
-    }
+  .item {
+    margin: 0 1rem;
+  }
 </style>
