@@ -24,9 +24,4 @@ export default {
     width: 100%;
     height: 100%;
 }
-
-a {
-    text-decoration: none;
-    color: #F6F7F8;
-}
 </style>

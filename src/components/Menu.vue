@@ -11,10 +11,12 @@
             </div>
             <div class="content-image"></div>
         </div>
-        <div class="nav"></div>
-        <router-link to="/menu/settings">設定</router-link>
-        <router-link to="/menu/gallery">ギャラリー</router-link>
-        <router-link to="/">戻る</router-link>
+        <div class="nav">
+            <router-link to="/menu"><span class="item">ホーム</span></router-link>
+            <router-link to="/menu/gallery"><span class="item">ギャラリー</span></router-link>
+            <router-link to="/menu/settings"><span class="item">設定</span></router-link>
+            <router-link to="/"><span class="item">タイトル</span></router-link>
+        </div>
     </div>
 </template>
 
@@ -39,5 +41,18 @@ export default {
 </script>
 
 <style>
+.menu {
+    position: relative;
 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    width: 100%;
+    height: 100%;
+}
 </style>

@@ -1,0 +1,17 @@
+p, a {
+    font-size: 1.6rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav {
+    position: absolute;
+    bottom: 1rem;
+    right: 0;
+}
+
+    .item {
+        margin: 0 1rem;
+    }
