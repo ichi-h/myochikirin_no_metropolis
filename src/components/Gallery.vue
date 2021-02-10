@@ -1,13 +1,22 @@
 <template>
   <div class="gallery">
-    <h1>Gallery</h1>
 
-    <images v-if="selector === 'images'"></images>
-    <music v-else-if="selector === 'music'"></music>
-    
-    <div class="selector">
-      <input @click="updateSelectorValue()" type="radio" name="selector" value="images" checked>Images
-      <input @click="updateSelectorValue()" type="radio" name="selector" value="music">Music
+    <div class="split">
+
+      <div class="left">
+        <div class="selector">
+          <ul>
+            <li><input @click="updateSelectorValue()" type="radio" name="selector" value="images" checked>Images</li>
+            <li><input @click="updateSelectorValue()" type="radio" name="selector" value="music">Music</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="right">
+        <images v-if="selector === 'images'"></images>
+        <music v-else-if="selector === 'music'"></music>
+      </div>
+
     </div>
 
     <navbar></navbar>
@@ -42,5 +51,17 @@ export default {
 </script>
 
 <style>
+.split {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
 
+  width: 80vw;
+}
+
+  .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>

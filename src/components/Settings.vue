@@ -1,13 +1,22 @@
 <template>
   <div class="settings">
-    <h1>Settings</h1>
 
-    <system v-if="selector === 'system'"></system>
-    <credit v-else-if="selector === 'credit'"></credit>
-    
-    <div class="selector">
-      <input @click="updateSelectorValue()" type="radio" name="selector" value="system" checked>System
-      <input @click="updateSelectorValue()" type="radio" name="selector" value="credit">Credit
+    <div class="split">
+
+      <div class="left">
+        <div class="selector">
+          <ul>
+            <li><input @click="updateSelectorValue()" type="radio" name="selector" value="system" checked>System</li>
+            <li><input @click="updateSelectorValue()" type="radio" name="selector" value="credit">Credit</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="right">
+        <system v-if="selector === 'system'"></system>
+        <credit v-else-if="selector === 'credit'"></credit>
+      </div>
+
     </div>
 
     <navbar></navbar>
@@ -42,5 +51,17 @@ export default {
 </script>
 
 <style>
+.split {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr;
 
+  width: 80vw;
+}
+
+  .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
