@@ -5,7 +5,7 @@
             <div class="list">
                 <ul>
                     <li v-for="shortStory in ShortStories" :key="shortStory.id">
-                        <a @click="toContent(shortStory.index)" :idx="shortStory.index">{{ shortStory.title }}</a>
+                        <a @click="toContent(shortStory.index)">{{ shortStory.title }}</a>
                     </li>
                 </ul>
             </div>
