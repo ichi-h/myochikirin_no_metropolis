@@ -6,7 +6,7 @@ a {
   text-decoration: none;
 }
 
-.home, .gallery, .settings {
+.home, .gallery, .settings, .content {
   position: relative;
 
   display: flex;
