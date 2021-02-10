@@ -1,22 +1,22 @@
 p, a {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.menu, .gallery, .settings {
-    position: relative;
+.home, .gallery, .settings {
+  position: relative;
 
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 
-    text-align: center;
+  text-align: center;
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
