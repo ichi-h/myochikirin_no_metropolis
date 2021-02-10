@@ -1,6 +1,6 @@
 <template>
-    <div class="menu">
-        <h1>Menu</h1>
+    <div class="home">
+        <h1>Home</h1>
         <div class="titles">
             <div class="list">
                 <ul>
@@ -20,7 +20,7 @@ import ShortStories from '../mixins/ShortStories'
 import Navbar from './Navbar'
 
 export default {
-    name: 'menu',
+    name: 'home',
     props: { index: Object },
     components: { Navbar },
     computed: {
@@ -31,7 +31,7 @@ export default {
     methods: {
         toContent: function(idx) {
             this.index.i = Number(idx)
-            this.$router.push('/menu/content')
+            this.$router.push('/content')
         }
     }
 }

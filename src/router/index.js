@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Start from '@/components/Start'
-import Menu from '@/components/Menu'
+import Home from '@/components/Home'
 import Content from '@/components/Content'
 import Gallery from '@/components/Gallery'
 import Settings from '@/components/Settings'
@@ -17,22 +17,22 @@ export default new Router({
       component: Start
     },
     {
-      path: '/menu',
-      name: 'menu',
-      component: Menu
+      path: '/home',
+      name: 'home',
+      component: Home
     },
     {
-      path: '/menu/content',
+      path: '/content',
       name: 'content',
       component: Content
     },
     {
-      path: '/menu/gallery',
+      path: '/gallery',
       name: 'gallery',
       component: Gallery
     },
     {
-      path: '/menu/settings',
+      path: '/settings',
       name: 'settings',
       component: Settings
     }

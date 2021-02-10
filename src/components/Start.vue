@@ -1,5 +1,5 @@
 <template>
-    <router-link to="/menu">
+    <router-link to="/home">
         <div class="start">
             <h1>タイトル</h1>
             <h2>画面をクリックしてください。</h2>

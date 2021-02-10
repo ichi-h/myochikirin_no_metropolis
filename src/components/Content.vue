@@ -2,7 +2,7 @@
   <div class="content">
     <h1>{{ ShortStories[index.i].title }}</h1>
     <p v-for="text in ShortStories[index.i].content" :key="text">{{ text }}</p>
-    <router-link to="/menu">戻る</router-link>
+    <router-link to="/home">戻る</router-link>
   </div>
 </template>
 
