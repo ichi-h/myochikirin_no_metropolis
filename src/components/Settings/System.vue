@@ -8,7 +8,7 @@
       <h2>SE音量</h2>
       <input type="range" name="se-vol" min="0" max="1" step="0.05">
     </div>
-    <div class="text">
+    <div class="text-speed">
       <h2>文字表示速度</h2>
       <input type="range" name="text-speed" min="0" max="1" step="0.05">
     </div>

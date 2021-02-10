@@ -1,8 +1,8 @@
 <template>
-  <div class="content">
+  <div class="content" @click="turnText()">
+    <img class="top-image" :src="'./static/img/' + (index.i + 1) + '.png'" alt="">
     <h1>{{ ShortStories[index.i].title }}</h1>
-    <p v-for="text in ShortStories[index.i].content" :key="text">{{ text }}</p>
-    <router-link to="/home">戻る</router-link>
+    <p v-for="j in ShortStories[index.i].content.length + 1" :key="j" class="text" :id="'text' + (j-1)">{{ ShortStories[index.i].content[j-1] }}</p>
   </div>
 </template>
 
@@ -17,22 +17,39 @@ export default {
       return ShortStories
     },
   },
+  data() {
+    return {
+      textLine: 0,
+    }
+  },
+  methods: {
+    turnText: function() {
+      let elm = document.getElementById('text' + this.textLine)
+      elm.style.opacity = '1'
+
+      this.textLine++
+
+      if (this.textLine == ShortStories[this.index.i].content.length + 1) {
+        this.$router.push('/home')
+      }
+    }
+  }
 }
 </script>
 
 <style>
 .content {
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-
-  text-align: center;
-
-  width: 100%;
-  height: 100%;
+  background-color: #050505;
+  color: #eaf4fc;
 }
+
+  .top-image {
+    width: 50vw;
+    margin-bottom: 2rem;
+  }
+
+  .text {
+    opacity: 0;
+    transition: .3s;
+  }
 </style>
