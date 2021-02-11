@@ -24,12 +24,18 @@
 </template>
 
 <script>
+import AudioFunc from '../mixins/AudioFunc'
 import Navbar from './Navbar'
 import Images from './Gallery/Images'
 import Music from './Gallery/Music'
 
 export default {
   name: 'gallery',
+  computed: {
+    AudioFunc() {
+      return AudioFunc
+    },
+  },
   components: { Navbar, Images, Music },
   data() {
     return {
@@ -42,6 +48,7 @@ export default {
       
       for (let i = 0; i < elm.length; i++) {
         if (elm[i].checked) {
+          AudioFunc.methods.playSE('./static/se/page.mp3')
           this.selector = elm[i].value
         }
       }

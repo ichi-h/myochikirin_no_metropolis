@@ -24,12 +24,18 @@
 </template>
 
 <script>
+import AudioFunc from '../mixins/AudioFunc'
 import Navbar from './Navbar'
 import System from './Settings/System'
 import Credit from './Settings/Credit'
 
 export default {
   name: 'settings',
+  computed: {
+    AudioFunc() {
+      return AudioFunc
+    },
+  },
   components: { Navbar, System, Credit },
   data() {
     return {
@@ -42,6 +48,7 @@ export default {
       
       for (let i = 0; i < elm.length; i++) {
         if (elm[i].checked) {
+          AudioFunc.methods.playSE('./static/se/page.mp3')
           this.selector = elm[i].value
         }
       }

@@ -1,15 +1,26 @@
 <template>
-  <router-link to="/home">
-    <div class="start">
-      <h1>タイトル</h1>
-      <h2>画面をクリックしてください。</h2>
-    </div>
-  </router-link>
+  <div class="start" @click="startToHome()">
+    <h1>タイトル</h1>
+    <h2>画面をクリックしてください。</h2>
+  </div>
 </template>
 
 <script>
+import AudioFunc from '../mixins/AudioFunc'
+
 export default {
-  name: 'start'
+  name: 'start',
+  computed: {
+    AudioFunc() {
+      return AudioFunc
+    },
+  },
+  methods: {
+    startToHome: function() {
+      AudioFunc.methods.playSE('./static/se/bell.mp3')
+      this.$router.push('/home')
+    }
+  }
 }
 </script>
 

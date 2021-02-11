@@ -16,6 +16,7 @@
 
 <script>
 import ShortStories from '../mixins/ShortStories'
+import AudioFunc from '../mixins/AudioFunc'
 import Navbar from './Navbar'
 
 export default {
@@ -26,10 +27,14 @@ export default {
     ShortStories() {
       return ShortStories
     },
+    AudioFunc() {
+      return AudioFunc
+    },
   },
   methods: {
     toContent: function(idx) {
       this.index.i = Number(idx)
+      AudioFunc.methods.playSE('./static/se/bell.mp3')
       this.$router.push('/content')
     }
   }
