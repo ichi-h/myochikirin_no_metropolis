@@ -1,12 +1,25 @@
 <template>
   <div class="app" id="app">
     <router-view :index="idx"></router-view>
+    <audio src="" preload="" id="bgm"></audio>
+    <audio src="" preload="" id="se"></audio>
   </div>
 </template>
 
 <script>
+import AudioFunc from './mixins/AudioFunc'
+
 export default {
   name: 'game_title',
+  computed: {
+    AudioFunc() {
+      return AudioFunc
+    },
+  },
+  mounted : function() {
+    AudioFunc.methods.init()
+    AudioFunc.methods.playBGM('./static/bgm/test1.mp3')
+  },
   data() {
     return {
       idx: { i: Number },
