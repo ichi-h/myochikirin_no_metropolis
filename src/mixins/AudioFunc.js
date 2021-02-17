@@ -1,21 +1,10 @@
 export default {
-  data() {
-    return {
-      bgmVol: Number,
-      seVol: Number,
-    }
-  },
   methods: {
-    init: function() {
-      this.bgmVol = 0.5
-      this.seVol = 0.5
-    },
-
-    playBGM: function(url) {
+    playBGM: function(url, bgmVol) {
       let bgmElm = document.getElementById('bgm')
 
       bgmElm.src = url
-      bgmElm.volume = this.bgmVol
+      bgmElm.volume = bgmVol
       bgmElm.play()
 
       bgmElm.addEventListener('ended', function() {
@@ -24,29 +13,13 @@ export default {
       }, false)
     },
 
-    fadeOutBGM: function(time) {
-      let bgmElm = document.getElementById('bgm')
-      let rate = this.bgmVol / (time / 0.1)
-
-      let timer = setInterval(function() {
-        if ((bgmElm.volume - rate) > 0) {
-          bgmElm.volume -= rate
-        }
-        else {
-          bgmElm.volume = 0
-          bgmElm.pause()
-          clearInterval(timer)
-        }
-      }, 100)
-    },
-
-    playSE: function(url) {
+    playSE: function(url, seVol) {
       let se = document.getElementById('se')
-      
+
       se.src = url
-      se.volume = this.seVol
+      se.volume = seVol
 
       se.play()
-    },
+    }
   },
 }

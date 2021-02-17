@@ -3,7 +3,8 @@
     "distDir": "../dist",
     "devPath": "http://localhost:8080/",
     "beforeDevCommand": "yarn webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "beforeBuildCommand": "npm run build"
+    "beforeBuildCommand": "npm run build",
+    "withGlobalTauri": true
   },
   "ctx": {},
   "tauri": {

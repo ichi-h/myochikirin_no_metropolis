@@ -1,5 +1,5 @@
 <template>
-  <div class="settings">
+  <div class="settings" id="settings">
 
     <div class="split">
 
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import SaveData from '../mixins/SaveData'
 import AudioFunc from '../mixins/AudioFunc'
 import Navbar from './Navbar'
 import System from './Settings/System'
@@ -32,6 +33,9 @@ import Credit from './Settings/Credit'
 export default {
   name: 'settings',
   computed: {
+    SaveData() {
+      return SaveData
+    },
     AudioFunc() {
       return AudioFunc
     },
@@ -42,13 +46,16 @@ export default {
       selector: 'system',
     }
   },
+  mounted: function() {
+    document.getElementById('settings').classList.add('fadein')
+  },
   methods: {
     updateSelectorValue: function() {
       var elm = document.getElementsByName('selector')
       
       for (let i = 0; i < elm.length; i++) {
         if (elm[i].checked) {
-          AudioFunc.methods.playSE('./static/se/page.mp3')
+          AudioFunc.methods.playSE('./static/se/page.mp3', SaveData.methods.getSEVol())
           this.selector = elm[i].value
         }
       }

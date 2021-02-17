@@ -1,0 +1,19 @@
+{
+  "bgmVol": "0.75",
+  "seVol": "1",
+  "textSpeed": "91",
+  "complateRate": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    false
+  ]
+}

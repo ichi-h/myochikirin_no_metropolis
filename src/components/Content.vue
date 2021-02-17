@@ -14,12 +14,16 @@
 </template>
 
 <script>
+import SaveData from '../mixins/SaveData'
 import ShortStories from '../mixins/ShortStories'
 
 export default {
   name: 'content',
   props: { index: Object },
   computed: {
+    SaveData() {
+      return SaveData
+    },
     ShortStories() {
       return ShortStories
     },
@@ -33,12 +37,35 @@ export default {
     }
   },
 
+  mounted : function() {
+    let appClassList = document.getElementById('app').classList
+
+    if (appClassList.contains('fadein-long')) {
+      appClassList.remove('fadein-long')
+    }
+    if (appClassList.contains('fadeout-long')) {
+      appClassList.remove('fadeout-long')
+    }
+
+    appClassList.add('fadein-long')
+  },
+
   methods: {
     turnText: function() {
       if (this.textLineNum == ShortStories[this.index.i].content.length &&
           this.toggle == true)
       {
-        this.$router.push('/home')
+        let array = SaveData.methods.getCompleteRate()
+        array[this.index.i] = true
+
+        SaveData.methods.setCompleteRate(array)
+        SaveData.methods.save()
+
+        document.getElementById('app').classList.add('fadeout-long')
+        setTimeout(function() {
+          this.$router.push('/home')
+        }.bind(this), 3000)
+
         return
       }
 
@@ -60,20 +87,22 @@ export default {
           char.innerHTML = txt_array[k]
 
           pText.append(char)
+
+          let speed = 140 - SaveData.methods.getTextSpeed()
           
           if (k != txt_array.length - 1) {
             window.setTimeout(function() {
-              char.classList.add('fade-in')
-            }.bind(this), k*100)
+              char.classList.add('fadein-text')
+            }.bind(this), k*speed)
           }
           else {
             window.setTimeout(function() {
-              char.classList.add('fade-in')
-            }.bind(this), k*100)
+              char.classList.add('fadein-text')
+            }.bind(this), k*speed)
 
             this.timeoutFunc = window.setTimeout(function() {
               this.turnOnToggle()
-            }.bind(this), (k+1)*100)
+            }.bind(this), (k+1)*speed)
           }
         }
 
@@ -91,7 +120,6 @@ export default {
 
     turnOnToggle: function() {
       this.toggle = true
-      console.log(true)
     },
 
     deleteSpace: function(array) {
@@ -121,13 +149,4 @@ export default {
   .p-text, .char {
     opacity: 0;
   }
-
-.fade-in {
-    opacity: 0;
-    animation: fadein .1s ease forwards;
-}
-
-    @keyframes fadein {
-        100% { opacity: 1; }
-    }
 </style>

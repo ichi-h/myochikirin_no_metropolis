@@ -5,7 +5,7 @@
         <img 
           @click="clickedGrid('grid-' + i)"
           :id="'grid-' + i"
-          :src="'./static/img/' + i + '.png'"
+          src=""
           :alt="i"
         >
       </div>
@@ -20,17 +20,49 @@
 </template>
 
 <script>
+import SaveData from '../../mixins/SaveData'
+
 export default {
   name: 'images',
+  computed: {
+    SaveData() {
+      return SaveData
+    },
+  },
+  data() {
+    return {
+      completeRateArray: Array
+    }
+  },
+  mounted: function() {
+    this.completeRateArray = SaveData.methods.getCompleteRate()
+
+    for (let i = 0; i < this.completeRateArray.length; i++) {
+      let imgElm = document.getElementById('grid-' + (i+1))
+      
+      if (this.completeRateArray[i]) {
+        imgElm.src = './static/img/' + (i+1) + '.png'
+      }
+      else {
+        imgElm.src = './static/img/secret.png'
+      }
+    }
+  },
   methods: {
     clickedImage: function() {
-      var popup = document.getElementById('js-popup')
+      let popup = document.getElementById('js-popup')
       popup.classList.toggle('is-show')
     },
-    clickedGrid: function(gridNum) {
-      var image = document.getElementById(gridNum).getAttribute('src');
+    clickedGrid: function(gridId) {
+      let gridNum = Number(gridId.replace('grid-', '')) - 1
 
-      var popupImage = document.getElementById('popup-image');
+      if (!this.completeRateArray[gridNum]) {
+        return
+      }
+
+      let image = document.getElementById(gridId).getAttribute('src');
+
+      let popupImage = document.getElementById('popup-image');
       popupImage.setAttribute('src', image);
       
       document.getElementById('js-popup').classList.add('is-show');

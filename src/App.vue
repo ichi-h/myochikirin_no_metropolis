@@ -7,18 +7,31 @@
 </template>
 
 <script>
+import SaveData from './mixins/SaveData'
 import AudioFunc from './mixins/AudioFunc'
 
 export default {
   name: 'game_title',
   computed: {
+    SaveData() {
+      return SaveData
+    },
     AudioFunc() {
       return AudioFunc
     },
   },
   mounted : function() {
-    AudioFunc.methods.init()
-    AudioFunc.methods.playBGM('./static/bgm/test1.mp3')
+    const process1 = async function() { SaveData.methods.init() }
+    const process2 = async function() { 
+      AudioFunc.methods.playBGM('./static/bgm/loop.mp3', SaveData.methods.getBGMVol())
+    }
+
+    const processAll = async function() {
+      await process1()
+      await process2()
+    }
+
+    processAll()
   },
   data() {
     return {
@@ -43,13 +56,18 @@ export default {
 
   cursor: default;
   overflow: hidden;
-  color: white;
+
+  pointer-events: all;
+
+  font-family: 'Satuki' !important;
 }
 
 .app {
   width: 100vw;
   height: 100vh;
 
-  background-color: #111117;
+  background-image: url('/static/img/texture.png');
+
+  opacity: 0;
 }
 </style>
