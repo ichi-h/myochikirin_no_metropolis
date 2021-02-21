@@ -3,7 +3,7 @@
   "seVol": "1",
   "textSpeed": "91",
   "complateRate": [
-    false,
+    true,
     false,
     true,
     false,

@@ -20,16 +20,53 @@ export default {
     },
   },
   mounted : function() {
-    let appClassList = document.getElementById('app').classList
-
-    if (appClassList.contains('fadein-long')) {
-      appClassList.remove('fadein-long')
-    }
-    if (appClassList.contains('fadeout-long')) {
-      appClassList.remove('fadeout-long')
+    let jsonPromise
+    let jsonObj
+    
+    const p1 = async function() {
+      jsonPromise = window.__TAURI__.fs.readTextFile('./savedata/savedata.json')
     }
 
-    appClassList.add('fadein-long')
+    const p2 = async function() {
+      await jsonPromise.then(function(item) {
+        jsonObj = JSON.parse(item)
+
+        SaveData.methods.setBGMVol(jsonObj.bgmVol)
+        SaveData.methods.setSEVol(jsonObj.seVol)
+        SaveData.methods.setTextSpeed(jsonObj.textSpeed)
+        SaveData.methods.setCompleteRate(jsonObj.complateRate)
+      }).catch((e) => { })
+    }
+    
+    const p3 = async function() {
+      SaveData.methods.loadFiles()
+    }
+
+    const p4 = async function() {
+      let bgmElm = AudioFunc.methods.playBGM(SaveData.methods.getBGMVol())
+
+      bgmElm[0].addEventListener("canplaythrough", function() {
+        let appClassList = document.getElementById('app').classList
+
+        if (appClassList.contains('fadein-long')) {
+          appClassList.remove('fadein-long')
+        }
+        if (appClassList.contains('fadeout-long')) {
+          appClassList.remove('fadeout-long')
+        }
+
+        appClassList.add('fadein-long')
+      }, false)
+    }
+
+    const processAll = async function() {
+      await p1()
+      await p2()
+      await p3()
+      await p4()
+    }
+
+    processAll()
   },
   methods: {
     startToHome: function() {

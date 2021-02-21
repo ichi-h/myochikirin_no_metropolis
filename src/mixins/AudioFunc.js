@@ -28,6 +28,8 @@ export default {
       }
 
       bgmElm[0].addEventListener("canplaythrough", start, false)
+
+      return bgmElm
     },
 
     playSE: function(url, seVol) {
