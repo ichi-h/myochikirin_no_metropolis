@@ -8,6 +8,13 @@ import './assets/css/style.css'
 
 Vue.config.productionTip = false
 
+window.saveData = {
+  bgmVol: 0.7,
+  seVol: 1,
+  textSpeed: 91,
+  complateRate: [false, false, false, false, false, false, false, false, false, false, false, false],
+}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -3,7 +3,6 @@
     <div @click="movePage('/home')"><span class="item">ホーム</span></div>
     <div @click="movePage('/gallery')"><span class="item">ギャラリー</span></div>
     <div @click="movePage('/settings')"><span class="item">設定</span></div>
-    <div @click="movePage('/')"><span class="item">タイトル</span></div>
   </div>
 </template>
 

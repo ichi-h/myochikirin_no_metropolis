@@ -44,7 +44,8 @@ export default {
   methods: {
     updateBGMVol: function() {
       SaveData.methods.setBGMVol(this.bgmFader.value)
-      document.getElementById('bgm').volume = Number(this.bgmFader.value)
+      document.getElementById('bgm1').volume = Number(this.bgmFader.value)
+      document.getElementById('bgm2').volume = Number(this.bgmFader.value)
       SaveData.methods.save()
     },
 

@@ -1,7 +1,8 @@
 <template>
   <div class="app" id="app">
     <router-view :index="idx"></router-view>
-    <audio src="" preload="" id="bgm"></audio>
+    <audio src="" preload="" id="bgm1"></audio>
+    <audio src="" preload="" id="bgm2"></audio>
     <audio src="" preload="" id="se"></audio>
   </div>
 </template>
@@ -21,9 +22,13 @@ export default {
     },
   },
   mounted : function() {
-    const process1 = async function() { SaveData.methods.init() }
-    const process2 = async function() { 
-      AudioFunc.methods.playBGM('./static/bgm/loop.mp3', SaveData.methods.getBGMVol())
+    const process1 = async function() {
+      SaveData.methods.loadJson()
+      SaveData.methods.loadFiles()
+    }
+
+    const process2 = async function() {
+      AudioFunc.methods.playBGM(SaveData.methods.getBGMVol())
     }
 
     const processAll = async function() {
