@@ -22,18 +22,37 @@ export default {
     },
   },
   mounted : function() {
-    const process1 = async function() {
-      SaveData.methods.loadJson()
+    let jsonPromise
+    let jsonObj
+    
+    const p1 = async function() {
+      jsonPromise = window.__TAURI__.fs.readTextFile('./savedata/savedata.json')
+    }
+
+    const p2 = async function() {
+      await jsonPromise.then(function(item) {
+        jsonObj = JSON.parse(item)
+
+        SaveData.methods.setBGMVol(jsonObj.bgmVol)
+        SaveData.methods.setSEVol(jsonObj.seVol)
+        SaveData.methods.setTextSpeed(jsonObj.textSpeed)
+        SaveData.methods.setCompleteRate(jsonObj.complateRate)
+      }).catch((e) => { })
+    }
+    
+    const p3 = async function() {
       SaveData.methods.loadFiles()
     }
 
-    const process2 = async function() {
+    const p4 = async function() {
       AudioFunc.methods.playBGM(SaveData.methods.getBGMVol())
     }
 
     const processAll = async function() {
-      await process1()
-      await process2()
+      await p1()
+      await p2()
+      await p3()
+      await p4()
     }
 
     processAll()

@@ -8,37 +8,6 @@ export default {
     }
   },
   methods: {
-    loadJson: function() {
-      let jsonPromise
-      
-      const p1 = async function() {
-        jsonPromise = window.__TAURI__.fs.readTextFile('./savedata/savedata.json')
-      }
-
-      const p2 = async function() {
-        jsonPromise.then((item) => {
-          const parseJson = new Promise((resolve) => {
-            let jsonObj = JSON.parse(item)
-            resolve(jsonObj)
-          })
-
-          parseJson.then((jsonObj) => {
-            window.saveData.bgmVol = jsonObj.bgmVol
-            window.saveData.seVol = jsonObj.seVol
-            window.saveData.textSpeed = jsonObj.textSpeed
-            window.saveData.complateRate = jsonObj.complateRate
-          })
-        }).catch((e) => { })
-      }
-
-      const pAll = async function() {
-        await p1()
-        await p2()
-      }
-
-      pAll()
-    },
-
     loadFiles: function() {
       let imgPathes = [
         './static/img/1.png',
@@ -60,10 +29,10 @@ export default {
 
     save: function() {
       let jsonObj = {
-        'bgmVol': window.saveData.bgmVol,
-        'seVol': window.saveData.seVol,
-        'textSpeed': window.saveData.textSpeed,
-        'complateRate': window.saveData.complateRate
+        'bgmVol': this.bgmVol,
+        'seVol': this.seVol,
+        'textSpeed': this.textSpeed,
+        'complateRate': this.complateRate
       }
 
       let json = JSON.stringify(jsonObj, null, '  ')
@@ -77,35 +46,35 @@ export default {
     },
 
     getBGMVol: function() {
-      return window.saveData.bgmVol
+      return this.bgmVol
     },
 
     setBGMVol: function(bgmVolArg) {
-      window.saveData.bgmVol = bgmVolArg
+      this.bgmVol = bgmVolArg
     },
 
     getSEVol: function() {
-      return window.saveData.seVol
+      return this.seVol
     },
 
     setSEVol: function(seVolArg) {
-      window.saveData.seVol = seVolArg
+      this.seVol = seVolArg
     },
 
     getTextSpeed: function() {
-      return window.saveData.textSpeed
+      return this.textSpeed
     },
 
     setTextSpeed: function(textSpeedArg) {
-      window.saveData.textSpeed = textSpeedArg
+      this.textSpeed = textSpeedArg
     },
 
     getCompleteRate: function() {
-      return window.saveData.complateRate
+      return this.complateRate
     },
 
     setCompleteRate: function(complateRateArg) {
-      window.saveData.complateRate = complateRateArg
+      this.complateRate = complateRateArg
     },
   }
 }
