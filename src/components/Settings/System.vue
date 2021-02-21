@@ -73,6 +73,7 @@ export default {
       }
 
       pText.innerHTML = ''
+      let speed = 140 - this.textFader.value
 
       let txt_str = '色は匂へど　散りぬるを　我が世誰そ　常ならむ'
       let txt_array = txt_str.split('')
@@ -84,8 +85,6 @@ export default {
         char.innerHTML = txt_array[k]
 
         pText.appendChild(char)
-
-        let speed = 140 - this.textFader.value
         
         window.setTimeout(function() {
           char.classList.add('fadein-text')

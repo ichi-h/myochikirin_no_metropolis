@@ -7,6 +7,7 @@
       :key="j"
       class="p-text"
       :id="'p-text' + (j-1)"
+      style="opacity: 0;"
     >
       {{ ShortStories[index.i].content[j-1] }}
     </p>
@@ -72,6 +73,8 @@ export default {
       if (this.toggle == true) {
         this.toggle = false
 
+        let speed = 140 - SaveData.methods.getTextSpeed()
+
         let pText = document.getElementById('p-text' + this.textLineNum)
 
         let txt_str = pText.innerHTML
@@ -88,8 +91,6 @@ export default {
 
           pText.append(char)
 
-          let speed = 140 - SaveData.methods.getTextSpeed()
-          
           if (k != txt_array.length - 1) {
             window.setTimeout(function() {
               char.classList.add('fadein-text')
@@ -146,7 +147,7 @@ export default {
     margin-bottom: 2rem;
   }
 
-  .p-text, .char {
+  .char {
     opacity: 0;
   }
 </style>
