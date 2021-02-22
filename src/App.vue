@@ -36,7 +36,7 @@ export default {
 
   pointer-events: all;
 
-  font-family: 'Satuki' !important;
+  font-family: 'togoshi' !important;
 }
 
 .app {
