@@ -6,8 +6,14 @@
       <div class="left">
         <div class="selector">
           <ul>
-            <li><input @click="updateSelectorValue()" type="radio" name="selector" value="system" checked>System</li>
-            <li><input @click="updateSelectorValue()" type="radio" name="selector" value="credit">Credit</li>
+            <li>
+              <input @click="updateSelectorValue()" id="radio-settings" type="radio" name="selector" value="system" checked>
+              <label class="radio-label" for="radio-settings">設定</label>
+            </li>
+            <li>
+              <input @click="updateSelectorValue()" id="radio-credit" type="radio" name="selector" value="credit">
+              <label class="radio-label" for="radio-credit">クレジット</label>
+            </li>
           </ul>
         </div>
       </div>
@@ -78,4 +84,19 @@ export default {
     justify-content: center;
     align-items: center;
   }
+
+input[type=radio] {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+
+.radio-label {
+  display: inline-block;
+  font-size: 1.5rem;
+  padding-bottom: 0.2rem;
+}
+
+input[type=radio]:checked + .radio-label {
+  border-bottom: 2px solid #fbfaf5;
+}
 </style>
