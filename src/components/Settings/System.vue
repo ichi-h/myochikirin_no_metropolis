@@ -133,4 +133,62 @@ export default {
 .char {
   opacity: 0;
 }
+
+input[type=range] {
+  box-sizing: border-box;
+  line-height: 1;
+  height: 3rem;
+  background-color: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  width: 50%;
+}
+  input[type=range]:focus {
+    outline: none;
+  }
+
+  input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  input[type=range]::-webkit-slider-thumb,
+  input[type=range]::-ms-thumb {
+    width: 1rem;
+    height: 1rem;
+    background-color: black;
+    border-radius: 1em;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+    }
+
+  input[type=range]:hover::-webkit-slider-thumb,
+  input[type=range]:hover::-ms-thumb {
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+
+  input[type=range]:active::-webkit-slider-thumb,
+  input[type=range]:active::-ms-thumb {
+    border-color: #ffffff;
+  }
+
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    cursor: pointer;
+    height: 1em;
+    border-bottom: 2px solid black;
+    background-color: transparent;
+  }
+  
+  input[type=range]::-ms-track {
+    background: black;
+    border: none;
+    height: 1px;
+  }
 </style>
