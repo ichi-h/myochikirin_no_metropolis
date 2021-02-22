@@ -1,24 +1,6 @@
 <template>
   <div class="gallery" id="gallery">
-
-    <div class="split">
-
-      <div class="left">
-        <div class="selector">
-          <ul>
-            <li><input @click="updateSelectorValue()" type="radio" name="selector" value="images" checked>Images</li>
-            <li><input @click="updateSelectorValue()" type="radio" name="selector" value="music">Music</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="right">
         <images v-if="selector === 'images'"></images>
-        <music v-else-if="selector === 'music'"></music>
-      </div>
-
-    </div>
-
     <navbar></navbar>
   </div>
 </template>
@@ -28,7 +10,6 @@ import SaveData from '../mixins/SaveData'
 import AudioFunc from '../mixins/AudioFunc'
 import Navbar from './Navbar'
 import Images from './Gallery/Images'
-import Music from './Gallery/Music'
 
 export default {
   name: 'gallery',
@@ -40,7 +21,7 @@ export default {
       return AudioFunc
     },
   },
-  components: { Navbar, Images, Music },
+  components: { Navbar, Images },
   data() {
     return {
       selector: 'images',
@@ -65,17 +46,5 @@ export default {
 </script>
 
 <style>
-.split {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr;
 
-  width: 80vw;
-}
-
-  .left {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 </style>
