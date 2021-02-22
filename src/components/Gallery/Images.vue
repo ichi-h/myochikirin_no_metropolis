@@ -1,5 +1,6 @@
 <template>
   <div class="images">
+    <h1>ギャラリー</h1>
     <div class="container">
       <div v-for="i in 9" :key="i" class="image-button">
         <img 

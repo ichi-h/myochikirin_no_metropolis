@@ -1,5 +1,6 @@
 <template>
   <div class="system">
+    <h1>設定</h1>
     <div class="bgm">
       <h2>BGM音量</h2>
       <input type="range" name="bgm-vol" id="bgm-vol" min="0" max="1" step="0.05">
@@ -185,7 +186,7 @@ input[type=range] {
     border-bottom: 2px solid black;
     background-color: transparent;
   }
-  
+
   input[type=range]::-ms-track {
     background: black;
     border: none;

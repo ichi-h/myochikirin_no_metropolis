@@ -22,6 +22,7 @@ a {
 
 h1 {
   font-family: 'pigmo' !important;
+  font-size: 3rem;
 }
 
 .home, .gallery, .settings, .content {
