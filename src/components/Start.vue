@@ -1,6 +1,8 @@
 <template>
   <div class="start" id="start" @click="startToHome()">
-    <h1>タイトル</h1>
+    <div class="top-cover"></div>
+    <div class="bottom-cover"></div>
+    <h1>めうちきりんの<br>メトロポリス</h1>
     <h2>画面をクリックしてください。</h2>
   </div>
 </template>
@@ -82,13 +84,61 @@ export default {
 
 <style>
 .start {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  position: relative;
 
-  width: 100%;
-  height: 100%;
+  background-image: url('/static/img/theme.png');
+  background-size: cover;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+  .start > h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    font-size: 7rem;
+    text-align: center;
+
+    text-shadow: 0 10px 25px 0 rgba(2, 2, 2, .2);
+    box-shadow: 0 10px 25px 0 rgba(2, 2, 2, .2);
+    
+    border: 10px double #fbfaf5;
+    padding: 1rem;
+  }
+
+  .start > h2 {
+    position: absolute;
+    bottom: calc(3.5vh - 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-size: 1.5rem;
+
+    animation: blinking 3s linear infinite;
+  }
+    @keyframes blinking {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+.top-cover, .bottom-cover {
+  position: absolute;
+
+  background-color: #050505;
+
+  height: 7vh;
+  width: 100vw;
+}
+
+.top-cover {
+  top: 0;
+}
+
+.bottom-cover {
+  bottom: 0;
 }
 </style>

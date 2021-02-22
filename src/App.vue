@@ -36,6 +36,8 @@ export default {
 
   pointer-events: all;
 
+  color: #fbfaf5;
+
   font-family: 'togoshi' !important;
 }
 

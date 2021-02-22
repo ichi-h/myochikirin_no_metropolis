@@ -3,6 +3,11 @@
   src: url('../fonts/togoshi-gothic-20080629/togoshi-gothic.ttf');
 }
 
+@font-face {
+  font-family: 'pigmo';
+  src: url('../fonts/pigmo01/Pigmo-01.otf');
+}
+
 body {
   background-color: black;
 }
@@ -13,6 +18,10 @@ p, a {
 
 a {
   text-decoration: none;
+}
+
+h1 {
+  font-family: 'pigmo' !important;
 }
 
 .home, .gallery, .settings, .content {
