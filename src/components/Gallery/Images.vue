@@ -1,7 +1,7 @@
 <template>
   <div class="images">
     <div class="container">
-      <div v-for="i in 12" :key="i" class="image-button">
+      <div v-for="i in 9" :key="i" class="image-button">
         <img 
           @click="clickedGrid('grid-' + i)"
           :id="'grid-' + i"
@@ -74,7 +74,7 @@ export default {
 <style>
 .container {
   display: grid;
-  gap: 10px;
+  gap: 1rem;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
 }
@@ -84,7 +84,7 @@ export default {
   }
 
     .image-button > img {
-      width: 250px;
+      width: 20vw;
       object-fit: cover;
     }
 
@@ -114,6 +114,6 @@ export default {
 }
 
 .popup-inner img {
-  width: 100vw;
+  width: 100.2vw;
 }
 </style>
