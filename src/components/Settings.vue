@@ -94,6 +94,7 @@ input[type=radio] {
   display: inline-block;
   font-size: 1.5rem;
   padding-bottom: 0.2rem;
+  cursor: pointer;
 }
 
 input[type=radio]:checked + .radio-label {

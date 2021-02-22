@@ -51,5 +51,6 @@ export default {
 
   .item {
     margin: 0 1rem;
+    cursor: pointer;
   }
 </style>

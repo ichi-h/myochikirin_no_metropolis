@@ -87,6 +87,7 @@ export default {
     .image-button > img {
       width: 20vw;
       object-fit: cover;
+      cursor: pointer;
     }
 
 .popup {
