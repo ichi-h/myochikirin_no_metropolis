@@ -49,7 +49,6 @@
             <li><a href="https://freesound.org/people/Zott820/sounds/209580/" target="_blank" rel="nofollow noopener">"Entrance Bell"</a> by Zott820</li>
             <li><a href="https://freesound.org/people/davidbain/sounds/136778/" target="_blank" rel="nofollow noopener">"Page Turn"</a> by davidbain</li>
             <li><a href="https://freesound.org/people/exterminat/sounds/164806/" target="_blank" rel="nofollow noopener">"Page turns and book close/open"</a> by exterminat</li>
-            <li><a href="https://freesound.org/people/salo_c_r_711/sounds/446702/" target="_blank" rel="nofollow noopener">"004-Cerrar_Libro.wav"</a> by salo_c_r_711</li>
           </ul>
         </div>
       </div>
