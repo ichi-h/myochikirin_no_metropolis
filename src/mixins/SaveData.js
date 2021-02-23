@@ -18,7 +18,7 @@ export default {
         './static/img/6.png',
         './static/img/7.png',
         './static/img/secret.png',
-        './static/img/texture.png'
+        './static/img/bg.png'
       ]
 
       for (let i = 0; i < imgPathes.length; i++) {

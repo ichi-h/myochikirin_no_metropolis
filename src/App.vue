@@ -45,7 +45,7 @@ export default {
   width: 100vw;
   height: 100vh;
 
-  background-image: url('/static/img/texture.png');
+  background-image: url('/static/img/bg.png');
 
   opacity: 0;
 }
