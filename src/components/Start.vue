@@ -92,7 +92,7 @@ export default {
 
   .start > h2 {
     position: absolute;
-    bottom: calc(7.5vh - 2.4rem);
+    bottom: calc(6vh - 2.4rem);
     left: 50%;
     transform: translateX(-50%);
 

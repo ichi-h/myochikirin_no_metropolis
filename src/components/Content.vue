@@ -142,6 +142,10 @@ export default {
   color: #eaf4fc;
 }
 
+  .content h1 {
+    margin: 1rem 0;
+  }
+
   .top-image {
     width: 50vw;
     margin-bottom: 2rem;

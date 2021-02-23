@@ -85,7 +85,7 @@ export default {
   }
 
     .image-button > img {
-      width: 20vw;
+      width: 18vw;
       object-fit: cover;
       cursor: pointer;
     }
