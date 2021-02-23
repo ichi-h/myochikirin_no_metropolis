@@ -4,7 +4,7 @@
 
     <div class="titles">
       <ul>
-        <li v-for="shortStory in ShortStories" :key="shortStory.title">
+        <li class="title" v-for="shortStory in ShortStories" :key="shortStory.title">
           <a @click="toContent(shortStory.index)">{{ shortStory.title }}</a>
         </li>
       </ul>
@@ -61,5 +61,7 @@ export default {
 </script>
 
 <style>
-
+.title {
+  margin-bottom: 1.2rem;
+}
 </style>

@@ -92,11 +92,11 @@ export default {
 
   .start > h2 {
     position: absolute;
-    bottom: calc(7.5vh - 1.5rem);
+    bottom: calc(7.5vh - 2.4rem);
     left: 50%;
     transform: translateX(-50%);
 
-    font-size: 1.5rem;
+    font-size: 2.4rem;
 
     animation: blinking 3s linear infinite;
   }

@@ -46,7 +46,7 @@ export default {
   position: absolute;
   bottom: 0;
   right: 0;
-  transform: translateX(-1rem) translateY(-1rem);
+  transform: translateX(-2rem) translateY(-2rem);
 }
 
   .item {

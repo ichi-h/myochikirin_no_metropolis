@@ -1,10 +1,14 @@
 <template>
   <div class="credit">
     <h1>クレジット</h1>
-    <h2>シナリオ／デザイン／サウンド／プログラミング</h2>
-    <p>Ippee</p>
-    <h2>使用素材</h2>
-    <p>……</p>
+    <div class="section">
+      <h2>制作</h2>
+      <p>いっぺー</p>
+    </div>
+    <div class="section">
+      <h2>使用素材</h2>
+      <p>……</p>
+    </div>
   </div>
 </template>
 
@@ -15,5 +19,7 @@ export default {
 </script>
 
 <style>
-
+.section {
+  margin-bottom: 2.8rem;
+}
 </style>

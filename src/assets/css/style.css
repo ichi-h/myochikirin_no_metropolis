@@ -8,12 +8,16 @@
   src: url('../fonts/pigmo01/Pigmo-01.otf');
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   background-color: black;
 }
 
 p, a {
-  font-size: 1.6rem;
+  font-size: 2.8rem;
 }
 
 a {
@@ -23,7 +27,13 @@ a {
 
 h1 {
   font-family: 'pigmo' !important;
-  font-size: 3rem;
+  font-size: 5rem;
+  margin-bottom: 2.4rem;
+}
+
+h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1.4rem;
 }
 
 .home, .gallery, .settings, .content {

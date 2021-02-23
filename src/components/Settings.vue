@@ -92,7 +92,7 @@ input[type=radio] {
 
 .radio-label {
   display: inline-block;
-  font-size: 1.5rem;
+  font-size: 2.8rem;
   padding-bottom: 0.2rem;
   cursor: pointer;
 }

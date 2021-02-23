@@ -1,15 +1,15 @@
 <template>
   <div class="system">
     <h1>設定</h1>
-    <div class="bgm">
+    <div class="system-item">
       <h2>BGM音量</h2>
       <input type="range" name="bgm-vol" id="bgm-vol" min="0" max="1" step="0.05">
     </div>
-    <div class="se">
+    <div class="system-item">
       <h2>SE音量</h2>
       <input type="range" name="se-vol" id="se-vol" min="0" max="1" step="0.05">
     </div>
-    <div class="text-speed">
+    <div class="system-item">
       <h2>文字表示速度</h2>
       <input type="range" name="text-speed" id="text-speed" min="0" max="140" step="7">
       <div class="preview">
@@ -135,10 +135,18 @@ export default {
   opacity: 0;
 }
 
+.system-item {
+  margin-bottom: 4.8rem;
+}
+
+  .preview {
+    margin-top: 2.8rem;
+  }
+
 input[type=range] {
   box-sizing: border-box;
   line-height: 1;
-  height: 3rem;
+  height: 4rem;
   background-color: transparent;
   cursor: pointer;
   -webkit-appearance: none;
@@ -157,8 +165,8 @@ input[type=range] {
   }
   input[type=range]::-webkit-slider-thumb,
   input[type=range]::-ms-thumb {
-    width: 1rem;
-    height: 1rem;
+    width: 2rem;
+    height: 2rem;
     background-color: black;
     border-radius: 1em;
     border: 1px solid black;
@@ -182,7 +190,7 @@ input[type=range] {
   input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
     cursor: pointer;
-    height: 1em;
+    height: 2em;
     border-bottom: 2px solid black;
     background-color: transparent;
   }
