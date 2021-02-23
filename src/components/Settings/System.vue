@@ -13,7 +13,7 @@
       <h2>文字表示速度</h2>
       <input type="range" name="text-speed" id="text-speed" min="0" max="140" step="7">
       <div class="preview">
-        <p class="demo-text" id="demo-text">色は匂へど　散りぬるを　我が世誰そ　常ならむ</p>
+        <p class="demo-text" id="demo-text">メッセージ表示テストメッセージ表示テスト</p>
       </div>
     </div>
   </div>
@@ -69,14 +69,14 @@ export default {
 
       if (this.textFader.value == 140) {
         clearInterval(this.repeatTextTimer)
-        pText.innerHTML = '色は匂へど　散りぬるを　我が世誰そ　常ならむ'
+        pText.innerHTML = 'メッセージ表示テストメッセージ表示テスト'
         return
       }
 
       pText.innerHTML = ''
       let speed = 140 - this.textFader.value
 
-      let txt_str = '色は匂へど　散りぬるを　我が世誰そ　常ならむ'
+      let txt_str = 'メッセージ表示テストメッセージ表示テスト'
       let txt_array = txt_str.split('')
       txt_array = this.deleteSpace(txt_array)
 
@@ -167,9 +167,9 @@ input[type=range] {
   input[type=range]::-ms-thumb {
     width: 2rem;
     height: 2rem;
-    background-color: black;
+    background-color: #fbfaf5;
     border-radius: 1em;
-    border: 1px solid black;
+    border: 1px solid #fbfaf5;
     cursor: pointer;
   }
 
@@ -177,26 +177,16 @@ input[type=range] {
       -webkit-appearance: none;
     }
 
-  input[type=range]:hover::-webkit-slider-thumb,
-  input[type=range]:hover::-ms-thumb {
-    border-color: rgba(255, 255, 255, 0.7);
-  }
-
-  input[type=range]:active::-webkit-slider-thumb,
-  input[type=range]:active::-ms-thumb {
-    border-color: #ffffff;
-  }
-
   input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
     cursor: pointer;
     height: 2em;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #fbfaf5;
     background-color: transparent;
   }
 
   input[type=range]::-ms-track {
-    background: black;
+    background: #fbfaf5;
     border: none;
     height: 1px;
   }
