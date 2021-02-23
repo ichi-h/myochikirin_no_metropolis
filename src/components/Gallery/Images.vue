@@ -22,12 +22,16 @@
 
 <script>
 import SaveData from '../../mixins/SaveData'
+import AudioFunc from '../../mixins/AudioFunc'
 
 export default {
   name: 'images',
   computed: {
     SaveData() {
       return SaveData
+    },
+    AudioFunc() {
+      return AudioFunc
     },
   },
   data() {
@@ -65,7 +69,8 @@ export default {
 
       let popupImage = document.getElementById('popup-image');
       popupImage.setAttribute('src', image);
-      
+
+      AudioFunc.methods.playSE('./static/se/turnPage2.wav', SaveData.methods.getSEVol())
       document.getElementById('js-popup').classList.add('is-show');
     }
   }
