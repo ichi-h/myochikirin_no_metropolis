@@ -1,8 +1,5 @@
 <template>
   <div class="start" id="start" @click="startToHome()">
-    <div class="top-cover"></div>
-    <div class="bottom-cover"></div>
-    <h1>めうちきりんの<br>メトロポリス</h1>
     <h2>画面をクリックしてください。</h2>
   </div>
 </template>
@@ -87,31 +84,15 @@ export default {
   position: relative;
 
   background-image: url('/static/img/theme.png');
-  background-size: cover;
+  background-size: 100vw 100vh;
 
   width: 100vw;
   height: 100vh;
 }
 
-  .start > h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-
-    font-size: 7rem;
-    text-align: center;
-
-    text-shadow: 0 10px 25px 0 rgba(2, 2, 2, .2);
-    box-shadow: 0 10px 25px 0 rgba(2, 2, 2, .2);
-    
-    border: 10px double #fbfaf5;
-    padding: 1rem;
-  }
-
   .start > h2 {
     position: absolute;
-    bottom: calc(3.5vh - 1rem);
+    bottom: calc(7.5vh - 1.5rem);
     left: 50%;
     transform: translateX(-50%);
 
@@ -124,21 +105,4 @@ export default {
       50% { opacity: 1; }
       100% { opacity: 0; }
     }
-
-.top-cover, .bottom-cover {
-  position: absolute;
-
-  background-color: #050505;
-
-  height: 7vh;
-  width: 100vw;
-}
-
-.top-cover {
-  top: 0;
-}
-
-.bottom-cover {
-  bottom: 0;
-}
 </style>
