@@ -52,7 +52,7 @@ export default {
 
     updateSEVol: function() {
       SaveData.methods.setSEVol(this.seFader.value)
-      AudioFunc.methods.playSE('./static/se/bell.mp3', SaveData.methods.getSEVol())
+      AudioFunc.methods.playSE('./static/se/bell.wav', SaveData.methods.getSEVol())
       SaveData.methods.save()
     },
 
