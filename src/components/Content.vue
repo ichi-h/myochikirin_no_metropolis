@@ -138,7 +138,7 @@ export default {
 
 <style>
 .content {
-  background-color: #050505;
+  background-color: #0c0c0c;
   color: #eaf4fc;
 }
 
