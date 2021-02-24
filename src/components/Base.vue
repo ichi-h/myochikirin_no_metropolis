@@ -39,5 +39,9 @@ export default {
 </script>
 
 <style>
-
+.base {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
 </style>
