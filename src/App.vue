@@ -5,6 +5,7 @@
     :style="'background-image: url(' + Images.bg + ');'"
   >
     <router-view :index="index"></router-view>
+
     <audio :src="bgmStart" preload="auto" id="bgm1"></audio>
     <audio :src="bgmLoop" preload="auto" id="bgm2"></audio>
     <audio :src="seBell" preload="auto" id="se-bell"></audio>
