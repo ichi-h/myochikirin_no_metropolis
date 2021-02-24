@@ -70,7 +70,7 @@ export default {
 <style>
 .split {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr;
 
   width: 80vw;
