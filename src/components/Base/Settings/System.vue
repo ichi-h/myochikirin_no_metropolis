@@ -88,7 +88,7 @@ export default {
         pText.appendChild(char)
         
         window.setTimeout(function() {
-          char.classList.add('fadein-text')
+          char.style.opacity = 1
         }.bind(this), k*speed)
       }
     },
@@ -133,6 +133,7 @@ export default {
 <style>
 .char {
   opacity: 0;
+  transition: .1s;
 }
 
 .system-item {

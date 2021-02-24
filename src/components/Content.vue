@@ -97,12 +97,12 @@ export default {
 
           if (k != txt_array.length - 1) {
             window.setTimeout(function() {
-              char.classList.add('fadein-text')
+              char.style.opacity = 1
             }.bind(this), k*speed)
           }
           else {
             window.setTimeout(function() {
-              char.classList.add('fadein-text')
+              char.style.opacity = 1
             }.bind(this), k*speed)
 
             this.timeoutFunc = window.setTimeout(function() {
@@ -157,5 +157,6 @@ export default {
 
   .char {
     opacity: 0;
+    transition: .1s;
   }
 </style>

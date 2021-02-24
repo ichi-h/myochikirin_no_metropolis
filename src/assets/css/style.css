@@ -79,11 +79,3 @@ h2 {
   @keyframes fadeout {
     100% { opacity: 0; }
   }
-
-.fadein-text {
-  opacity: 0;
-  animation: fadein-text .1s ease forwards;
-}
-  @keyframes fadein-text {
-    100% { opacity: 1; }
-  }
