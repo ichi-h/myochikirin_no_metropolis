@@ -30,7 +30,7 @@ export default {
 
       let elm = document.getElementById(currentURL)
 
-      AudioFunc.methods.playSE('./static/se/turnPage1.mp3', SaveData.methods.getSEVol())
+      AudioFunc.methods.playSE('se-turn-page1', SaveData.methods.getSEVol())
       elm.classList.add('fadeout')
 
       setTimeout(function() {

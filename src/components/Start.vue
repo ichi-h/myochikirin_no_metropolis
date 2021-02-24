@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     startToHome: function() {
-      AudioFunc.methods.playSE('./static/se/bell.mp3', SaveData.methods.getSEVol())
+      AudioFunc.methods.playSE('se-bell', SaveData.methods.getSEVol())
       document.getElementById('app').classList.add('fadeout-long')
       setTimeout(function() {
         this.$router.push('/home')

@@ -1,18 +1,31 @@
 <template>
   <div class="app" id="app">
     <router-view :index="idx"></router-view>
-    <audio src="" preload="" id="bgm1"></audio>
-    <audio src="" preload="" id="bgm2"></audio>
-    <audio src="" preload="" id="se"></audio>
+    <audio :src="bgmStart" preload="auto" id="bgm1"></audio>
+    <audio :src="bgmLoop" preload="auto" id="bgm2"></audio>
+    <audio :src="seBell" preload="auto" id="se-bell"></audio>
+    <audio :src="seTurnPage1" preload="auto" id="se-turn-page1"></audio>
+    <audio :src="seTurnPage2" preload="auto" id="se-turn-page2"></audio>
   </div>
 </template>
 
 <script>
+import BGMStart from '@/assets/bgm/start.mp3'
+import BGMLoop from '@/assets/bgm/loop.mp3'
+import SEBell from '@/assets/se/bell.mp3'
+import SETurnPage1 from '@/assets/se/turnPage1.mp3'
+import SETurnPage2 from '@/assets/se/turnPage2.mp3'
+
 export default {
   name: 'game_title',
   data() {
     return {
       idx: { i: Number },
+      bgmStart: BGMStart,
+      bgmLoop: BGMLoop,
+      seBell: SEBell,
+      seTurnPage1: SETurnPage1,
+      seTurnPage2: SETurnPage2,
     }
   },
   mounted: function() {

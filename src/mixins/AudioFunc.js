@@ -6,12 +6,6 @@ export default {
         document.getElementById('bgm2')
       ]
 
-      bgmElm[0].src = './static/bgm/start.mp3'
-      bgmElm[1].src = './static/bgm/loop.mp3'
-
-      bgmElm[0].preload = 'auto'
-      bgmElm[1].preload = 'auto'
-
       bgmElm[0].volume = bgmVol
       bgmElm[1].volume = bgmVol
 
@@ -39,12 +33,12 @@ export default {
       return bgmElm
     },
 
-    playSE: function(url, seVol) {
-      let se = document.getElementById('se')
+    playSE: function(id, seVol) {
+      let se = document.getElementById(id)
 
-      se.src = url
       se.volume = seVol
 
+      se.currentTime = 0
       se.play()
     }
   },

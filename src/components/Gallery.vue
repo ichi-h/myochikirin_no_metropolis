@@ -36,7 +36,7 @@ export default {
       
       for (let i = 0; i < elm.length; i++) {
         if (elm[i].checked) {
-          AudioFunc.methods.playSE('./static/se/turnPage1.mp3', SaveData.methods.getSEVol())
+          AudioFunc.methods.playSE('se-turn-page1', SaveData.methods.getSEVol())
           this.selector = elm[i].value
         }
       }
