@@ -5,13 +5,17 @@
       id="app"
       :style="'background-image: url(' + Images.bg + ');'"
     >
-      <router-view :index="index" :loaded="loaded"></router-view>
+      <router-view :index="index" :loaded="loaded" :message="message"></router-view>
 
       <audio :src="bgmStart" preload="auto" id="bgm1"></audio>
       <audio :src="bgmLoop" preload="auto" id="bgm2"></audio>
       <audio :src="seBell" preload="auto" id="se-bell"></audio>
       <audio :src="seTurnPage1" preload="auto" id="se-turn-page1"></audio>
       <audio :src="seTurnPage2" preload="auto" id="se-turn-page2"></audio>
+
+      <div class="msg" id="msg">
+        <msg></msg>
+      </div>
     </div>
 
     <div v-if="loaded.bool !== true" class="loading blinking" id="loading">
@@ -29,8 +33,11 @@ import SEBell from '@/assets/se/bell.mp3'
 import SETurnPage1 from '@/assets/se/turnPage1.mp3'
 import SETurnPage2 from '@/assets/se/turnPage2.mp3'
 
+import Msg from '@/components/Msg'
+
 export default {
   name: 'game_title',
+  components: { Msg },
   computed: {
     Images() {
       return Images
@@ -40,6 +47,7 @@ export default {
     return {
       index: { i: Number },
       loaded: { bool: false },
+      message: { elm: undefined },
       bgmStart: BGMStart,
       bgmLoop: BGMLoop,
       seBell: SEBell,
@@ -48,6 +56,8 @@ export default {
     }
   },
   mounted: function() {
+    this.message.elm = document.getElementById('msg')
+
     this.changeFontSize()
     window.addEventListener('resize', this.changeFontSize, false)
   },
@@ -104,5 +114,19 @@ export default {
   transform: translateX(-2rem) translateY(-2rem);
   
   transition: 1s;
+}
+
+.msg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+
+  text-align: center;
+
+  width: 100vw;
+
+  visibility: hidden;
 }
 </style>

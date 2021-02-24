@@ -16,7 +16,10 @@ import Images from '@/mixins/Images'
 
 export default {
   name: 'start',
-  props: { loaded: Object },
+  props: {
+    loaded: Object,
+    message: Object,
+  },
   computed: {
     SaveData() {
       return SaveData
@@ -30,9 +33,23 @@ export default {
   },
   mounted : function() {
     let loaded = this.loaded
+    let message = this.message
 
     let jsonPromise
     let jsonObj
+
+    const checkBrowser = function() {
+      return new Promise((resolve, reject) => {
+        let browser = window.navigator.userAgent.toLowerCase()
+
+        if (browser.indexOf('edge') != -1 || browser.indexOf('safari') != -1) {
+          resolve()
+        }
+        else {
+          throw 'browser error'
+        }
+      })
+    }
     
     const p1 = async function() {
       jsonPromise = window.__TAURI__.fs.readTextFile('./savedata/savedata.json')
@@ -67,6 +84,7 @@ export default {
         }
 
         appClassList.add('fadein-long')
+        document.getElementById('start').style.pointerEvents = 'auto'
       }, false)
     }
 
@@ -77,7 +95,21 @@ export default {
       await p4()
     }
 
-    processAll()
+    checkBrowser()
+      .then(processAll)
+      .catch((e) => {
+        let startElm = document.getElementById('start')
+        startElm.style.background = 'none'
+        startElm.innerHTML = ''
+        
+        loaded.bool = true
+
+        message.elm.style.visibility = 'visible'
+
+        let appElm = document.getElementById('app')
+        appElm.style.background = "none"
+        appElm.classList.add('fadein-long')
+      })
   },
   methods: {
     startGame: function() {
@@ -98,6 +130,8 @@ export default {
   position: relative;
 
   background-size: 100vw 100vh;
+
+  pointer-events: none;
 
   width: 100vw;
   height: 100vh;
