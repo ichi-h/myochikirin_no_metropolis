@@ -1,5 +1,10 @@
 <template>
-  <div class="start" id="start" @click="startToHome()">
+  <div
+    class="start"
+    id="start"
+    @click="startToHome()"
+    :style="'background-image: url(' + Images.theme + ');'"
+  >
     <h2>画面をクリックしてください。</h2>
   </div>
 </template>
@@ -7,6 +12,7 @@
 <script>
 import SaveData from '../mixins/SaveData'
 import AudioFunc from '../mixins/AudioFunc'
+import Images from '@/mixins/Images'
 
 export default {
   name: 'start',
@@ -16,6 +22,9 @@ export default {
     },
     AudioFunc() {
       return AudioFunc
+    },
+    Images() {
+      return Images
     },
   },
   mounted : function() {
@@ -36,12 +45,8 @@ export default {
         SaveData.methods.setCompleteRate(jsonObj.complateRate)
       }).catch((e) => { })
     }
-    
-    const p3 = async function() {
-      SaveData.methods.loadFiles()
-    }
 
-    const p4 = async function() {
+    const p3 = async function() {
       let bgmElm = AudioFunc.methods.playBGM(SaveData.methods.getBGMVol())
 
       bgmElm[0].addEventListener("canplaythrough", function() {
@@ -62,7 +67,6 @@ export default {
       await p1()
       await p2()
       await p3()
-      await p4()
     }
 
     processAll()
@@ -83,7 +87,6 @@ export default {
 .start {
   position: relative;
 
-  background-image: url('/static/img/theme.jpg');
   background-size: 100vw 100vh;
 
   width: 100vw;

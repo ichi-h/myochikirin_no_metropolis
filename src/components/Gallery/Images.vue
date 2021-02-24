@@ -23,6 +23,7 @@
 <script>
 import SaveData from '../../mixins/SaveData'
 import AudioFunc from '../../mixins/AudioFunc'
+import Images from '@/mixins/Images'
 
 export default {
   name: 'images',
@@ -32,6 +33,9 @@ export default {
     },
     AudioFunc() {
       return AudioFunc
+    },
+    Images() {
+      return Images
     },
   },
   data() {
@@ -46,10 +50,10 @@ export default {
       let imgElm = document.getElementById('grid-' + (i+1))
       
       if (this.completeRateArray[i]) {
-        imgElm.src = './static/img/' + (i+1) + '.jpg'
+        imgElm.src = Images.img[i]
       }
       else {
-        imgElm.src = './static/img/secret.jpg'
+        imgElm.src = Images.secret
       }
     }
   },

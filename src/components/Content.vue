@@ -1,6 +1,6 @@
 <template>
   <div class="content" @click="turnText()">
-    <img class="top-image" :src="'./static/img/' + (index.i + 1) + '.jpg'" alt="">
+    <img class="top-image" :src="Images.img[index.i]" alt="">
     <h1>{{ ShortStories[index.i].title }}</h1>
     <p
       v-for="j in ShortStories[index.i].content.length + 1"
@@ -17,6 +17,7 @@
 <script>
 import SaveData from '../mixins/SaveData'
 import ShortStories from '../mixins/ShortStories'
+import Images from '@/mixins/Images'
 
 export default {
   name: 'content',
@@ -27,6 +28,9 @@ export default {
     },
     ShortStories() {
       return ShortStories
+    },
+    Images() {
+      return Images
     },
   },
 

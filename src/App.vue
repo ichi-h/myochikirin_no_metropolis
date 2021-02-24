@@ -1,5 +1,9 @@
 <template>
-  <div class="app" id="app">
+  <div
+    class="app"
+    id="app"
+    :style="'background-image: url(' + Images.bg + ');'"
+  >
     <router-view :index="idx"></router-view>
     <audio :src="bgmStart" preload="auto" id="bgm1"></audio>
     <audio :src="bgmLoop" preload="auto" id="bgm2"></audio>
@@ -10,6 +14,8 @@
 </template>
 
 <script>
+import Images from '@/mixins/Images'
+
 import BGMStart from '@/assets/bgm/start.mp3'
 import BGMLoop from '@/assets/bgm/loop.mp3'
 import SEBell from '@/assets/se/bell.mp3'
@@ -18,6 +24,11 @@ import SETurnPage2 from '@/assets/se/turnPage2.mp3'
 
 export default {
   name: 'game_title',
+  computed: {
+    Images() {
+      return Images
+    },
+  },
   data() {
     return {
       idx: { i: Number },
@@ -76,7 +87,6 @@ export default {
   width: 100vw;
   height: 100vh;
 
-  background-image: url('/static/img/bg.jpg');
   background-size: 100vw 100vh;
 
   opacity: 0;

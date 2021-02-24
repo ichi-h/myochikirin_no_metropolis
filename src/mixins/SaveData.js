@@ -8,26 +8,6 @@ export default {
     }
   },
   methods: {
-    loadFiles: function() {
-      let imgPathes = [
-        './static/img/1.jpg',
-        './static/img/2.jpg',
-        './static/img/3.jpg',
-        './static/img/4.jpg',
-        './static/img/5.jpg',
-        './static/img/6.jpg',
-        './static/img/7.jpg',
-        './static/img/secret.jpg',
-        './static/img/theme.jpg',
-        './static/img/bg.jpg'
-      ]
-
-      for (let i = 0; i < imgPathes.length; i++) {
-        let imgElem = document.createElement('img')
-        imgElem.src = imgPathes[i]
-      }
-    },
-
     save: function() {
       let jsonObj = {
         'bgmVol': this.bgmVol,
