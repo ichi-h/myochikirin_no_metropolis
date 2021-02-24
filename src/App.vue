@@ -83,8 +83,6 @@ export default {
   cursor: default;
   overflow: hidden;
 
-  pointer-events: all;
-
   color: #fbfaf5;
 
   font-family: 'togoshi' !important;

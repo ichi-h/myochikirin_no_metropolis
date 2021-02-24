@@ -1,5 +1,5 @@
 <template>
-  <div class="content" @click="turnText()">
+  <div class="content" id="content" @click="turnText()">
     <img class="top-image" :src="Images.img[index.i]" alt="" draggable="false">
     <h1>{{ ShortStories[index.i].title }}</h1>
     <p
@@ -53,6 +53,7 @@ export default {
     }
 
     appClassList.add('fadein-long')
+    document.body.style.pointerEvents = 'auto'
   },
 
   methods: {
@@ -60,6 +61,8 @@ export default {
       if (this.textLineNum == ShortStories[this.index.i].content.length &&
           this.toggle == true)
       {
+        document.getElementById('content').style.pointerEvents = 'none'
+
         let array = SaveData.methods.getCompleteRate()
         array[this.index.i] = true
 

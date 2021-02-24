@@ -81,6 +81,8 @@ export default {
   },
   methods: {
     startGame: function() {
+      document.getElementById('start').style.pointerEvents = 'none'
+
       AudioFunc.methods.playSE('se-bell', SaveData.methods.getSEVol())
       document.getElementById('app').classList.add('fadeout-long')
       setTimeout(function() {

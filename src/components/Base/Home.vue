@@ -2,7 +2,7 @@
   <div class="home" id="home">
     <h1>ホーム</h1>
 
-    <div class="titles">
+    <div class="titles" id="titles">
       <ul>
         <li class="title" v-for="shortStory in ShortStories" :key="shortStory.title">
           <a @click="toContent(shortStory.index)">{{ shortStory.title }}</a>
@@ -36,6 +36,8 @@ export default {
   },
   methods: {
     toContent: function(idx) {
+      document.getElementById('titles').style.pointerEvents = 'none'
+
       this.index.i = Number(idx)
       AudioFunc.methods.playSE('se-bell', SaveData.methods.getSEVol())
       
