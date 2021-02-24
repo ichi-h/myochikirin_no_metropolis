@@ -70,7 +70,7 @@ export default {
       let popupImage = document.getElementById('popup-image');
       popupImage.setAttribute('src', image);
 
-      AudioFunc.methods.playSE('./static/se/turnPage2.wav', SaveData.methods.getSEVol())
+      AudioFunc.methods.playSE('./static/se/turnPage2.mp3', SaveData.methods.getSEVol())
       document.getElementById('js-popup').classList.add('is-show');
     }
   }

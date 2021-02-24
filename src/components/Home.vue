@@ -49,7 +49,7 @@ export default {
   methods: {
     toContent: function(idx) {
       this.index.i = Number(idx)
-      AudioFunc.methods.playSE('./static/se/bell.wav', SaveData.methods.getSEVol())
+      AudioFunc.methods.playSE('./static/se/bell.mp3', SaveData.methods.getSEVol())
       
       document.getElementById('app').classList.add('fadeout-long')
       setTimeout(function() {
