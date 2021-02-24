@@ -61,7 +61,7 @@ export default {
   methods: {
     clickedImage: function() {
       let popup = document.getElementById('js-popup')
-      popup.classList.toggle('is-show')
+      popup.classList.remove('is-show')
     },
     clickedGrid: function(gridId) {
       let gridNum = Number(gridId.replace('grid-', '')) - 1
