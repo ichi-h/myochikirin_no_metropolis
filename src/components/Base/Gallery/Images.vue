@@ -8,6 +8,7 @@
           :id="'grid-' + i"
           src=""
           :alt="i"
+          draggable="false"
         >
       </div>
     </div>
