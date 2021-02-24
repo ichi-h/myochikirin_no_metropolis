@@ -5,7 +5,7 @@
     @click="startGame()"
     :style="'background-image: url(' + Images.theme + ');'"
   >
-    <h2>画面をクリックしてください。</h2>
+    <h2 class="blinking">画面をクリックしてください。</h2>
   </div>
 </template>
 
@@ -16,6 +16,7 @@ import Images from '@/mixins/Images'
 
 export default {
   name: 'start',
+  props: { loaded: Object },
   computed: {
     SaveData() {
       return SaveData
@@ -28,6 +29,8 @@ export default {
     },
   },
   mounted : function() {
+    let loaded = this.loaded
+
     let jsonPromise
     let jsonObj
     
@@ -47,6 +50,10 @@ export default {
     }
 
     const p3 = async function() {
+      loaded.bool = true
+    }
+
+    const p4 = async function() {
       let bgmElm = AudioFunc.methods.playBGM(SaveData.methods.getBGMVol())
 
       bgmElm[0].addEventListener("canplaythrough", function() {
@@ -67,6 +74,7 @@ export default {
       await p1()
       await p2()
       await p3()
+      await p4()
     }
 
     processAll()
@@ -100,12 +108,5 @@ export default {
     transform: translateX(-50%);
 
     font-size: 2.4rem;
-
-    animation: blinking 3s linear infinite;
   }
-    @keyframes blinking {
-      0% { opacity: 0; }
-      50% { opacity: 1; }
-      100% { opacity: 0; }
-    }
 </style>

@@ -1,16 +1,22 @@
 <template>
-  <div
-    class="app"
-    id="app"
-    :style="'background-image: url(' + Images.bg + ');'"
-  >
-    <router-view :index="index"></router-view>
+  <div style="position: relative;">
+    <div
+      class="app"
+      id="app"
+      :style="'background-image: url(' + Images.bg + ');'"
+    >
+      <router-view :index="index" :loaded="loaded"></router-view>
 
-    <audio :src="bgmStart" preload="auto" id="bgm1"></audio>
-    <audio :src="bgmLoop" preload="auto" id="bgm2"></audio>
-    <audio :src="seBell" preload="auto" id="se-bell"></audio>
-    <audio :src="seTurnPage1" preload="auto" id="se-turn-page1"></audio>
-    <audio :src="seTurnPage2" preload="auto" id="se-turn-page2"></audio>
+      <audio :src="bgmStart" preload="auto" id="bgm1"></audio>
+      <audio :src="bgmLoop" preload="auto" id="bgm2"></audio>
+      <audio :src="seBell" preload="auto" id="se-bell"></audio>
+      <audio :src="seTurnPage1" preload="auto" id="se-turn-page1"></audio>
+      <audio :src="seTurnPage2" preload="auto" id="se-turn-page2"></audio>
+    </div>
+
+    <div v-if="loaded.bool !== true" class="loading blinking" id="loading">
+      <p>NOW LOADING...</p>
+    </div>
   </div>
 </template>
 
@@ -33,6 +39,7 @@ export default {
   data() {
     return {
       index: { i: Number },
+      loaded: { bool: false },
       bgmStart: BGMStart,
       bgmLoop: BGMLoop,
       seBell: SEBell,
@@ -90,5 +97,14 @@ export default {
   background-size: 100vw 100vh;
 
   opacity: 0;
+}
+
+.loading {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translateX(-2rem) translateY(-2rem);
+  
+  transition: 1s;
 }
 </style>

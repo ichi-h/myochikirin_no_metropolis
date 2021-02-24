@@ -48,6 +48,16 @@ h2 {
 /*
   Animation
 */
+.blinking {
+  opacity: 0;
+  animation: blinking 3s linear infinite;
+}
+  @keyframes blinking {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
 .fadein-long {
   opacity: 0;
   animation: fadein-long 2s ease forwards;
