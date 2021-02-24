@@ -10,16 +10,16 @@ export default {
   methods: {
     loadFiles: function() {
       let imgPathes = [
-        './static/img/1.png',
-        './static/img/2.png',
-        './static/img/3.png',
-        './static/img/4.png',
-        './static/img/5.png',
-        './static/img/6.png',
-        './static/img/7.png',
-        './static/img/secret.png',
-        './static/img/theme.png',
-        './static/img/bg.png'
+        './static/img/1.jpg',
+        './static/img/2.jpg',
+        './static/img/3.jpg',
+        './static/img/4.jpg',
+        './static/img/5.jpg',
+        './static/img/6.jpg',
+        './static/img/7.jpg',
+        './static/img/secret.jpg',
+        './static/img/theme.jpg',
+        './static/img/bg.jpg'
       ]
 
       for (let i = 0; i < imgPathes.length; i++) {

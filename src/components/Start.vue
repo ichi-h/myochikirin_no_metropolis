@@ -83,7 +83,7 @@ export default {
 .start {
   position: relative;
 
-  background-image: url('/static/img/theme.png');
+  background-image: url('/static/img/theme.jpg');
   background-size: 100vw 100vh;
 
   width: 100vw;

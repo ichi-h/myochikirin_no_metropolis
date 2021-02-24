@@ -65,7 +65,7 @@ export default {
   width: 100vw;
   height: 100vh;
 
-  background-image: url('/static/img/bg.png');
+  background-image: url('/static/img/bg.jpg');
   background-size: 100vw 100vh;
 
   opacity: 0;

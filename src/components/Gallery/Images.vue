@@ -46,10 +46,10 @@ export default {
       let imgElm = document.getElementById('grid-' + (i+1))
       
       if (this.completeRateArray[i]) {
-        imgElm.src = './static/img/' + (i+1) + '.png'
+        imgElm.src = './static/img/' + (i+1) + '.jpg'
       }
       else {
-        imgElm.src = './static/img/secret.png'
+        imgElm.src = './static/img/secret.jpg'
       }
     }
   },

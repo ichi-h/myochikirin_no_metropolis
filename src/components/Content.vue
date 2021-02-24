@@ -1,6 +1,6 @@
 <template>
   <div class="content" @click="turnText()">
-    <img class="top-image" :src="'./static/img/' + (index.i + 1) + '.png'" alt="">
+    <img class="top-image" :src="'./static/img/' + (index.i + 1) + '.jpg'" alt="">
     <h1>{{ ShortStories[index.i].title }}</h1>
     <p
       v-for="j in ShortStories[index.i].content.length + 1"
