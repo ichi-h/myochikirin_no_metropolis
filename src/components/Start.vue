@@ -63,7 +63,16 @@ export default {
         SaveData.methods.setSEVol(jsonObj.seVol)
         SaveData.methods.setTextSpeed(jsonObj.textSpeed)
         SaveData.methods.setCompleteRate(jsonObj.complateRate)
-      }).catch((e) => { })
+      }).catch((e) => {
+        let array = Array(9).fill(false)
+
+        SaveData.methods.setBGMVol(0.5)
+        SaveData.methods.setSEVol(1.0)
+        SaveData.methods.setTextSpeed(91)
+        SaveData.methods.setCompleteRate(array)
+
+        SaveData.methods.save()
+      })
     }
 
     const p3 = async function() {
