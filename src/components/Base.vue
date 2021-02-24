@@ -43,5 +43,7 @@ export default {
   position: relative;
   width: 100vw;
   height: 100vh;
+
+  background-color: rgba(12, 12, 12, 0.5);
 }
 </style>
