@@ -41,6 +41,7 @@ export default {
     }
   },
   mounted: function() {
+    this.changeFontSize()
     window.addEventListener('resize', this.changeFontSize, false)
   },
 
