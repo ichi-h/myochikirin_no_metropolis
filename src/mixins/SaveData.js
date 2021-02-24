@@ -18,6 +18,7 @@ export default {
         './static/img/6.png',
         './static/img/7.png',
         './static/img/secret.png',
+        './static/img/theme.png',
         './static/img/bg.png'
       ]
 
