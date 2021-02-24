@@ -126,6 +126,7 @@ export default {
 }
 
 .popup-inner img {
-  width: 100.2vw;
+  width: 100vw;
+  height: 100vh;
 }
 </style>
