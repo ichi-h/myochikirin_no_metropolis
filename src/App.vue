@@ -15,6 +15,26 @@ export default {
       idx: { i: Number },
     }
   },
+  mounted: function() {
+    window.addEventListener('resize', this.changeFontSize, false)
+  },
+
+  methods: {
+    changeFontSize: function() {
+      let htmlElm = document.documentElement
+      let currentHeight = htmlElm.clientHeight
+
+      let w = (0.2 / 294) * currentHeight + 0.31
+
+      htmlElm.style.fontSize = `${62.5 * w}%`
+
+      window.__TAURI__.tauri.invoke({ cmd: 'myCustomCommand', arg: htmlElm.style.fontSize })
+    }
+  },
+
+  destroyed: function() {
+    window.removeEventListener('resize', this.changeFontSize, false)
+  },
 }
 </script>
 
@@ -46,6 +66,7 @@ export default {
   height: 100vh;
 
   background-image: url('/static/img/bg.png');
+  background-size: 100vw 100vh;
 
   opacity: 0;
 }
