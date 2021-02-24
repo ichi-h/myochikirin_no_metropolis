@@ -4,7 +4,7 @@
     id="app"
     :style="'background-image: url(' + Images.bg + ');'"
   >
-    <router-view :index="idx"></router-view>
+    <router-view :index="index"></router-view>
     <audio :src="bgmStart" preload="auto" id="bgm1"></audio>
     <audio :src="bgmLoop" preload="auto" id="bgm2"></audio>
     <audio :src="seBell" preload="auto" id="se-bell"></audio>
@@ -31,7 +31,7 @@ export default {
   },
   data() {
     return {
-      idx: { i: Number },
+      index: { i: Number },
       bgmStart: BGMStart,
       bgmLoop: BGMLoop,
       seBell: SEBell,

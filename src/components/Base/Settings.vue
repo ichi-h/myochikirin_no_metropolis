@@ -24,15 +24,12 @@
       </div>
 
     </div>
-
-    <navbar></navbar>
   </div>
 </template>
 
 <script>
 import SaveData from '@/mixins/SaveData'
 import AudioFunc from '@/mixins/AudioFunc'
-import Navbar from './Navbar'
 import System from './Settings/System'
 import Credit from './Settings/Credit'
 
@@ -46,7 +43,7 @@ export default {
       return AudioFunc
     },
   },
-  components: { Navbar, System, Credit },
+  components: { System, Credit },
   data() {
     return {
       selector: 'system',

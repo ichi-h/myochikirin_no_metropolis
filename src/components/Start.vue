@@ -2,7 +2,7 @@
   <div
     class="start"
     id="start"
-    @click="startToHome()"
+    @click="startGame()"
     :style="'background-image: url(' + Images.theme + ');'"
   >
     <h2>画面をクリックしてください。</h2>
@@ -72,11 +72,11 @@ export default {
     processAll()
   },
   methods: {
-    startToHome: function() {
+    startGame: function() {
       AudioFunc.methods.playSE('se-bell', SaveData.methods.getSEVol())
       document.getElementById('app').classList.add('fadeout-long')
       setTimeout(function() {
-        this.$router.push('/home')
+        this.$router.push('/base')
       }.bind(this), 3000)
     }
   }

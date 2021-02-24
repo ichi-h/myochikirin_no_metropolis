@@ -1,8 +1,8 @@
 <template>
   <div class="nav">
-    <a @click="movePage('/home')"><span class="item">ホーム</span></a>
-    <a @click="movePage('/gallery')"><span class="item">ギャラリー</span></a>
-    <a @click="movePage('/settings')"><span class="item">設定</span></a>
+    <a @click="movePage('home')"><span class="item">ホーム</span></a>
+    <a @click="movePage('gallery')"><span class="item">ギャラリー</span></a>
+    <a @click="movePage('settings')"><span class="item">設定</span></a>
   </div>
 </template>
 
@@ -12,6 +12,7 @@ import AudioFunc from '@/mixins/AudioFunc'
 
 export default {
   name: 'nav',
+  props: { selector: Object },
   computed: {
     SaveData() {
       return SaveData
@@ -21,20 +22,15 @@ export default {
     },
   },
   methods: {
-    movePage: function(url) {
-      let currentURL = this.$route.path
+    movePage: function(id) {
+      if (this.selector.value === id) return
 
-      if (currentURL == url) return
-
-      currentURL = currentURL.replace('/', '')
-
-      let elm = document.getElementById(currentURL)
-
+      let currentElm = document.getElementById(this.selector.value)
+      currentElm.classList.add('fadeout')
       AudioFunc.methods.playSE('se-turn-page1', SaveData.methods.getSEVol())
-      elm.classList.add('fadeout')
 
       setTimeout(function() {
-        this.$router.push(url)
+        this.selector.value = id // change components
       }.bind(this), 500)
     }
   }

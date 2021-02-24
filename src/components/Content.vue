@@ -68,7 +68,7 @@ export default {
 
         document.getElementById('app').classList.add('fadeout-long')
         setTimeout(function() {
-          this.$router.push('/home')
+          this.$router.push('/base')
         }.bind(this), 3000)
 
         return
