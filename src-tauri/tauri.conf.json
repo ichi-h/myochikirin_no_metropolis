@@ -26,8 +26,8 @@
       "externalBin": [],
       "copyright": "",
       "category": "DeveloperTool",
-      "shortDescription": "",
-      "longDescription": "",
+      "shortDescription": "Game",
+      "longDescription": "Game",
       "deb": {
         "depends": [],
         "useBootstrapper": false
@@ -43,7 +43,7 @@
       "all": true
     },
     "window": {
-      "title": "Tauri App",
+      "title": "Myochikirin no Metropolis",
       "width": 1280,
       "height": 720,
       "resizable": true,
