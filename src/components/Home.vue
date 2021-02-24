@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import SaveData from '../mixins/SaveData'
-import AudioFunc from '../mixins/AudioFunc'
-import ShortStories from '../mixins/ShortStories'
+import SaveData from '@/mixins/SaveData'
+import AudioFunc from '@/mixins/AudioFunc'
+import ShortStories from '@/mixins/ShortStories'
 import Navbar from './Navbar'
 
 export default {

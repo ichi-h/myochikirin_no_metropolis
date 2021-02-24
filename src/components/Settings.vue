@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import SaveData from '../mixins/SaveData'
-import AudioFunc from '../mixins/AudioFunc'
+import SaveData from '@/mixins/SaveData'
+import AudioFunc from '@/mixins/AudioFunc'
 import Navbar from './Navbar'
 import System from './Settings/System'
 import Credit from './Settings/Credit'

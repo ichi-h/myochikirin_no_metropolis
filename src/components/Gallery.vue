@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import SaveData from '../mixins/SaveData'
-import AudioFunc from '../mixins/AudioFunc'
+import SaveData from '@/mixins/SaveData'
+import AudioFunc from '@/mixins/AudioFunc'
 import Navbar from './Navbar'
 import Images from './Gallery/Images'
 

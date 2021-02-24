@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import SaveData from '../../mixins/SaveData'
-import AudioFunc from '../../mixins/AudioFunc'
+import SaveData from '@/mixins/SaveData'
+import AudioFunc from '@/mixins/AudioFunc'
 import Images from '@/mixins/Images'
 
 export default {

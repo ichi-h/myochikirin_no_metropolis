@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import SaveData from '../mixins/SaveData'
-import AudioFunc from '../mixins/AudioFunc'
+import SaveData from '@/mixins/SaveData'
+import AudioFunc from '@/mixins/AudioFunc'
 
 export default {
   name: 'nav',

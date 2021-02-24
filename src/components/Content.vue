@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import SaveData from '../mixins/SaveData'
-import ShortStories from '../mixins/ShortStories'
+import SaveData from '@/mixins/SaveData'
+import ShortStories from '@/mixins/ShortStories'
 import Images from '@/mixins/Images'
 
 export default {
