@@ -27,8 +27,6 @@ export default {
       let w = (0.2 / 294) * currentHeight + 0.31
 
       htmlElm.style.fontSize = `${62.5 * w}%`
-
-      window.__TAURI__.tauri.invoke({ cmd: 'myCustomCommand', arg: htmlElm.style.fontSize })
     }
   },
 
