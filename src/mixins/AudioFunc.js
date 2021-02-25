@@ -28,7 +28,7 @@ export default {
         setTimeout(loopPlay.bind(this), time[0])
       }
 
-      bgmElm[0].addEventListener("canplaythrough", start, false)
+      // bgmElm[0].addEventListener("canplaythrough", start, false)
 
       return bgmElm
     },

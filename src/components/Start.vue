@@ -126,7 +126,9 @@ export default {
     startGame: function() {
       document.getElementById('start').style.pointerEvents = 'none'
 
-      AudioFunc.methods.playSE('se-bell', SaveData.methods.getSEVol())
+      window.__TAURI__.tauri.invoke({ cmd: 'playSE', file_name: 'bell', volume: 1.0 }) // test code
+      window.__TAURI__.tauri.invoke({ cmd: 'changeBGMVolme', volume: 0.1 }) // test code
+
       document.getElementById('app').classList.add('fadeout-long')
       setTimeout(function() {
         this.$router.push('/base')
