@@ -147,7 +147,7 @@ export default {
 input[type=range] {
   box-sizing: border-box;
   line-height: 1;
-  height: 4rem;
+  height: 5rem;
   background-color: transparent;
   cursor: pointer;
   -webkit-appearance: none;
@@ -175,7 +175,16 @@ input[type=range] {
   }
 
     input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
+      -webkit-appearance:none;
+
+      width: 2rem;
+      height: 2rem;
+      background-color: #fbfaf5;
+      border-radius: 1em;
+      border: 1px solid #fbfaf5;
+      cursor: pointer;
+
+      margin-top: 1.3rem;
     }
 
   input[type=range]::-webkit-slider-runnable-track {
