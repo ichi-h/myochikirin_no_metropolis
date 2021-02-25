@@ -23,7 +23,18 @@ export default {
         contents: json,
       }
 
-      window.__TAURI__.fs.writeFile(file)
+      const p1 = async function() {
+        window.__TAURI__.fs.createDir('./savedata/')
+      }
+      const p2 = async function() {
+        window.__TAURI__.fs.writeFile(file)
+      }
+      const pAll = async function() {
+        await p1()
+        await p2()
+      }
+
+      pAll()
     },
 
     getBGMVol: function() {

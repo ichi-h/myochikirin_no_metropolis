@@ -66,9 +66,9 @@ export default {
       }).catch((e) => {
         let array = Array(9).fill(false)
 
-        SaveData.methods.setBGMVol(0.5)
-        SaveData.methods.setSEVol(1.0)
-        SaveData.methods.setTextSpeed(91)
+        SaveData.methods.setBGMVol("0.5")
+        SaveData.methods.setSEVol("1")
+        SaveData.methods.setTextSpeed("91")
         SaveData.methods.setCompleteRate(array)
 
         SaveData.methods.save()
