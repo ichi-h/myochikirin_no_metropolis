@@ -1,30 +1,11 @@
-# novel_game_tauri_vue
+# めうちきりんのメトロポリス
+![title](./assets/title.jpg)
 
-> A novel game project of tauri(Rust) and Vue.js
+**「めうちきりんのメトロポリス」**は、カットアップや自然言語処理による文章生成を活用した、ショートショート形式のサウンドノベルです。  
+既存のゲームエンジンやスクリプトエンジンは使用せず、フロントエンドに**HTML+CSS+JavaScript（Vue.js）**、バックエンドに**Rust（tauri）**を据えて制作しました。  
 
-## Build Setup
+## ダウンロード
+Coming soon...  
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 文章生成について
+Coming soon...  
