@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'togoshi';
-  src: url('../fonts/togoshi-gothic-20080629/togoshi-gothic.ttf');
+  src: url('../fonts/togoshi-gothic/togoshi-gothic.min.woff2');
 }
 
 @font-face {
   font-family: 'pigmo';
-  src: url('../fonts/pigmo01/Pigmo-01.otf');
+  src: url('../fonts/pigmo01/pigmo01.min.woff2');
 }
 
 body {
