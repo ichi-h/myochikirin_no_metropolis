@@ -41,8 +41,10 @@ export default {
     const checkBrowser = function() {
       return new Promise((resolve, reject) => {
         let browser = window.navigator.userAgent.toLowerCase()
-
-        if (browser.indexOf('edge') != -1 || browser.indexOf('safari') != -1) {
+        if (browser.indexOf('edge') != -1
+        || browser.indexOf('safari') != -1
+        || browser.indexOf('applewebkit') != -1)
+        {
           resolve()
         }
         else {
