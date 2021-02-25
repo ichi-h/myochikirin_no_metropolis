@@ -1,11 +1,11 @@
 [package]
-name = "novel-game-tauri-vue"
+name = "myochikirin_no_metropolis"
 version = "0.1.0"
 description = "Game"
 authors = [ "you" ]
 license = ""
 repository = ""
-default-run = "novel-game-tauri-vue"
+default-run = "myochikirin_no_metropolis"
 edition = "2018"
 build = "src/build.rs"
 
@@ -22,5 +22,5 @@ embedded-server = [ "tauri/embedded-server" ]
 no-server = [ "tauri/no-server" ]
 
 [[bin]]
-name = "novel-game-tauri-vue"
+name = "myochikirin_no_metropolis"
 path = "src/main.rs"
