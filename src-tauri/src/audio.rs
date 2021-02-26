@@ -10,7 +10,7 @@ static BELL: Lazy<File> = Lazy::new(|| File::open("audio/bell.ogg").unwrap());
 static TURN_PAGE1: Lazy<File> = Lazy::new(|| File::open("audio/turnPage1.ogg").unwrap());
 static TURN_PAGE2: Lazy<File> = Lazy::new(|| File::open("audio/turnPage2.ogg").unwrap());
 
-pub fn start_bgm(sink: &Sink, volume: f32) {
+pub fn set_bgm(sink: &Sink) {
   let src_start = rodio::Decoder::new(BufReader::new(&*BGM1)).unwrap();
   let src_loop = rodio::Decoder::new(BufReader::new(&*BGM2)).unwrap();
 
@@ -19,13 +19,24 @@ pub fn start_bgm(sink: &Sink, volume: f32) {
   sink.append(src_start);
   sink.append(src_loop);
 
-  sink.set_volume(volume);
+  sink.pause();
 
   loop {
     println!("Loop start");
     let mut s = String::new();
     std::io::stdin().read_line(&mut s).ok();
   }
+}
+
+pub fn play_bgm(sink: &Sink, volume: f32) {
+  while !sink.is_paused() {
+    std::thread::sleep(Duration::from_secs_f32(0.1));
+    println!("wait");
+  }
+  println!("start bgm");
+
+  sink.set_volume(volume);
+  sink.play();
 }
 
 pub fn play_se(sink: &Sink, file_name: String, volume: f32) {
