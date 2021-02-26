@@ -1016,7 +1016,6 @@ dependencies = [
 name = "myochikirin_no_metropolis"
 version = "0.1.0"
 dependencies = [
- "once_cell",
  "rodio",
  "serde",
  "serde_json",
