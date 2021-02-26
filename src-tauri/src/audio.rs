@@ -9,7 +9,9 @@ pub fn set_bgm(bgm_sink: &Sink) {
   let src_start = rodio::Decoder::new(buf1).unwrap();
   let src_loop = rodio::Decoder::new(buf2).unwrap();
 
-  let src_loop = src_loop.skip_duration(Duration::from_millis(5506)).repeat_infinite();
+  let loop_start_point: f32 = 222980.0 / 44100.0;
+
+  let src_loop = src_loop.skip_duration(Duration::from_secs_f32(loop_start_point)).repeat_infinite();
 
   bgm_sink.append(src_start);
   bgm_sink.append(src_loop);
