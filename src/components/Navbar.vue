@@ -8,7 +8,6 @@
 
 <script>
 import SaveData from '@/mixins/SaveData'
-import AudioFunc from '@/mixins/AudioFunc'
 
 export default {
   name: 'nav',
@@ -17,9 +16,6 @@ export default {
     SaveData() {
       return SaveData
     },
-    AudioFunc() {
-      return AudioFunc
-    },
   },
   methods: {
     movePage: function(id) {
@@ -27,7 +23,12 @@ export default {
 
       let currentElm = document.getElementById(this.selector.value)
       currentElm.classList.add('fadeout')
-      AudioFunc.methods.playSE('se-turn-page1', SaveData.methods.getSEVol())
+
+      window.__TAURI__.tauri.invoke({
+        cmd: 'playSE',
+        file_name: 'turnPage1',
+        volume: SaveData.methods.getSEVol()
+      })
 
       setTimeout(function() {
         this.selector.value = id // change components

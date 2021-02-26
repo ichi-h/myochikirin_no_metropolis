@@ -11,7 +11,6 @@
 
 <script>
 import SaveData from '@/mixins/SaveData'
-import AudioFunc from '@/mixins/AudioFunc'
 import Images from '@/mixins/Images'
 
 export default {
@@ -23,9 +22,6 @@ export default {
   computed: {
     SaveData() {
       return SaveData
-    },
-    AudioFunc() {
-      return AudioFunc
     },
     Images() {
       return Images
@@ -82,21 +78,23 @@ export default {
     }
 
     const p4 = async function() {
-      let bgmElm = AudioFunc.methods.playBGM(SaveData.methods.getBGMVol())
+      window.__TAURI__.tauri.invoke({
+        cmd: 'playBGM',
+        volume: SaveData.methods.getBGMVol()
+      })
+    }
+    const p5 = async function() {
+      let appClassList = document.getElementById('app').classList
 
-      bgmElm[0].addEventListener("canplaythrough", function() {
-        let appClassList = document.getElementById('app').classList
+      if (appClassList.contains('fadein-long')) {
+        appClassList.remove('fadein-long')
+      }
+      if (appClassList.contains('fadeout-long')) {
+        appClassList.remove('fadeout-long')
+      }
 
-        if (appClassList.contains('fadein-long')) {
-          appClassList.remove('fadein-long')
-        }
-        if (appClassList.contains('fadeout-long')) {
-          appClassList.remove('fadeout-long')
-        }
-
-        appClassList.add('fadein-long')
-        document.getElementById('start').style.pointerEvents = 'auto'
-      }, false)
+      appClassList.add('fadein-long')
+      document.getElementById('start').style.pointerEvents = 'auto'
     }
 
     const processAll = async function() {
@@ -104,6 +102,7 @@ export default {
       await p2()
       await p3()
       await p4()
+      await p5()
     }
 
     checkBrowser()
@@ -126,8 +125,11 @@ export default {
     startGame: function() {
       document.getElementById('start').style.pointerEvents = 'none'
 
-      window.__TAURI__.tauri.invoke({ cmd: 'playSE', file_name: 'bell', volume: 1.0 }) // test code
-      window.__TAURI__.tauri.invoke({ cmd: 'changeBGMVolme', volume: 0.1 }) // test code
+      window.__TAURI__.tauri.invoke({
+        cmd: 'playSE',
+        file_name: 'bell',
+        volume: SaveData.methods.getSEVol()
+      })
 
       document.getElementById('app').classList.add('fadeout-long')
       setTimeout(function() {

@@ -21,16 +21,12 @@
 
 <script>
 import SaveData from '@/mixins/SaveData'
-import AudioFunc from '@/mixins/AudioFunc'
 
 export default {
   name: 'system',
   computed: {
     SaveData() {
       return SaveData
-    },
-    AudioFunc() {
-      return AudioFunc
     },
   },
   data() {
@@ -45,14 +41,24 @@ export default {
   methods: {
     updateBGMVol: function() {
       SaveData.methods.setBGMVol(this.bgmFader.value)
-      document.getElementById('bgm1').volume = Number(this.bgmFader.value)
-      document.getElementById('bgm2').volume = Number(this.bgmFader.value)
+
+      window.__TAURI__.tauri.invoke({
+        cmd: 'changeBGMVolme',
+        volume: SaveData.methods.getBGMVol()
+      })
+
       SaveData.methods.save()
     },
 
     updateSEVol: function() {
       SaveData.methods.setSEVol(this.seFader.value)
-      AudioFunc.methods.playSE('se-bell', SaveData.methods.getSEVol())
+
+      window.__TAURI__.tauri.invoke({
+        cmd: 'playSE',
+        file_name: 'bell',
+        volume: SaveData.methods.getSEVol()
+      })
+
       SaveData.methods.save()
     },
 

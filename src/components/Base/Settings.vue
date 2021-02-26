@@ -29,7 +29,6 @@
 
 <script>
 import SaveData from '@/mixins/SaveData'
-import AudioFunc from '@/mixins/AudioFunc'
 import System from './Settings/System'
 import Credit from './Settings/Credit'
 
@@ -38,9 +37,6 @@ export default {
   computed: {
     SaveData() {
       return SaveData
-    },
-    AudioFunc() {
-      return AudioFunc
     },
   },
   components: { System, Credit },
@@ -58,7 +54,12 @@ export default {
       
       for (let i = 0; i < elm.length; i++) {
         if (elm[i].checked) {
-          AudioFunc.methods.playSE('se-turn-page2', SaveData.methods.getSEVol())
+          window.__TAURI__.tauri.invoke({
+            cmd: 'playSE',
+            file_name: 'turnPage2',
+            volume: SaveData.methods.getSEVol()
+          })
+          
           this.selector = elm[i].value
         }
       }

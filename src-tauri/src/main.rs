@@ -6,14 +6,12 @@
 mod cmd;
 mod audio;
 
-use audio::{start_bgm, play_se};
 use std::sync::Arc;
 
 fn main() {
   let (_stream, handle) = rodio::OutputStream::try_default().unwrap();
   let bgm_sink = Arc::new(rodio::Sink::try_new(&handle).unwrap());
   let se_sink = Arc::new(rodio::Sink::try_new(&handle).unwrap());
-  let vol = 0.4;
 
   {
     let bgm_sink_ = bgm_sink.clone();
@@ -34,11 +32,20 @@ fn main() {
                   //  your command code
                   println!("{}", arg);
                 },
+                PlayBGM { volume } => {
+                  let volume_float: f32 = volume.parse::<f32>().unwrap();
+                  println!("PlayBGM vol: {}", volume);
+                  audio::play_bgm(&bgm_sink_, volume_float);
+                },
                 ChangeBGMVolme { volume } => {
-                  bgm_sink_.set_volume(volume);
+                  let volume_float: f32 = volume.parse::<f32>().unwrap();
+                  println!("ChangeBGMVolme vol: {}", volume);
+                  bgm_sink_.set_volume(volume_float);
                 },
                 PlaySE { file_name, volume } => {
-                  play_se(&se_sink_, file_name, volume);
+                  let volume_float: f32 = volume.parse::<f32>().unwrap();
+                  println!("PlaySE vol: {}, file_name: {}", volume, file_name);
+                  audio::play_se(&se_sink_, file_name, volume_float);
                 },
               }
               Ok(())
@@ -53,5 +60,5 @@ fn main() {
   }
 
   let bgm_sink_ = bgm_sink.clone();
-  start_bgm(&bgm_sink_, vol);
+  audio::set_bgm(&bgm_sink_);
 }

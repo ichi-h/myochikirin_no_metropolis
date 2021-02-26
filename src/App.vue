@@ -7,12 +7,6 @@
     >
       <router-view :index="index" :loaded="loaded" :message="message"></router-view>
 
-      <audio :src="bgmStart" preload="auto" id="bgm1"></audio>
-      <audio :src="bgmLoop" preload="auto" id="bgm2"></audio>
-      <audio :src="seBell" preload="auto" id="se-bell"></audio>
-      <audio :src="seTurnPage1" preload="auto" id="se-turn-page1"></audio>
-      <audio :src="seTurnPage2" preload="auto" id="se-turn-page2"></audio>
-
       <div class="msg" id="msg">
         <msg></msg>
       </div>
@@ -26,13 +20,6 @@
 
 <script>
 import Images from '@/mixins/Images'
-
-import BGMStart from '@/assets/bgm/start.mp3'
-import BGMLoop from '@/assets/bgm/loop.mp3'
-import SEBell from '@/assets/se/bell.mp3'
-import SETurnPage1 from '@/assets/se/turnPage1.mp3'
-import SETurnPage2 from '@/assets/se/turnPage2.mp3'
-
 import Msg from '@/components/Msg'
 
 export default {
@@ -48,11 +35,6 @@ export default {
       index: { i: Number },
       loaded: { bool: false },
       message: { elm: undefined },
-      bgmStart: BGMStart,
-      bgmLoop: BGMLoop,
-      seBell: SEBell,
-      seTurnPage1: SETurnPage1,
-      seTurnPage2: SETurnPage2,
     }
   },
   mounted: function() {

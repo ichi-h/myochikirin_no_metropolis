@@ -23,7 +23,6 @@
 
 <script>
 import SaveData from '@/mixins/SaveData'
-import AudioFunc from '@/mixins/AudioFunc'
 import Images from '@/mixins/Images'
 
 export default {
@@ -31,9 +30,6 @@ export default {
   computed: {
     SaveData() {
       return SaveData
-    },
-    AudioFunc() {
-      return AudioFunc
     },
     Images() {
       return Images
@@ -75,7 +71,13 @@ export default {
       let popupImage = document.getElementById('popup-image');
       popupImage.setAttribute('src', image);
 
-      AudioFunc.methods.playSE('se-turn-page2', SaveData.methods.getSEVol())
+
+      window.__TAURI__.tauri.invoke({
+        cmd: 'playSE',
+        file_name: 'turnPage2',
+        volume: SaveData.methods.getSEVol()
+      })
+      
       document.getElementById('js-popup').classList.add('is-show');
     }
   }

@@ -14,7 +14,6 @@
 
 <script>
 import SaveData from '@/mixins/SaveData'
-import AudioFunc from '@/mixins/AudioFunc'
 import ShortStories from '@/mixins/ShortStories'
 
 export default {
@@ -23,9 +22,6 @@ export default {
   computed: {
     SaveData() {
       return SaveData
-    },
-    AudioFunc() {
-      return AudioFunc
     },
     ShortStories() {
       return ShortStories
@@ -39,7 +35,12 @@ export default {
       document.getElementById('titles').style.pointerEvents = 'none'
 
       this.index.i = Number(idx)
-      AudioFunc.methods.playSE('se-bell', SaveData.methods.getSEVol())
+
+      window.__TAURI__.tauri.invoke({
+        cmd: 'playSE',
+        file_name: 'bell',
+        volume: SaveData.methods.getSEVol()
+      })
       
       document.getElementById('app').classList.add('fadeout-long')
       setTimeout(function() {
