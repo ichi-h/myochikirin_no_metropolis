@@ -128,7 +128,7 @@ export default {
       }
 
 .ps__rail-y {
-  width: 0.9rem;
+  width: 1.5rem;
   opacity: 0.6 !important;
 }
 
@@ -137,11 +137,11 @@ export default {
 .ps__rail-y:focus > .ps__thumb-y,
 .ps__rail-y.ps--clicking .ps__thumb-y {
   background-color: #fbfaf5;
-  width: 0.9rem;
+  width: 0.8rem;
 }
 
 .ps-scrollbar-y-hover-width {
-  width: 0.9rem;
+  width: 0.8rem;
 }
 
 .ps .ps__rail-y:hover,
