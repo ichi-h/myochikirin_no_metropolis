@@ -1,25 +1,20 @@
-use rodio::{Source, Sink};
-use once_cell::sync::Lazy;
-use std::io::BufReader;
-use std::fs::File;
+use rodio::{Source, Sink, OutputStreamHandle};
+use std::io::Cursor;
 use std::time::Duration;
 
-static BGM1: Lazy<File> = Lazy::new(|| File::open("audio/bgm.ogg").unwrap());
-static BGM2: Lazy<File> = Lazy::new(|| File::open("audio/bgm.ogg").unwrap());
-static BELL: Lazy<File> = Lazy::new(|| File::open("audio/bell.ogg").unwrap());
-static TURN_PAGE1: Lazy<File> = Lazy::new(|| File::open("audio/turnPage1.ogg").unwrap());
-static TURN_PAGE2: Lazy<File> = Lazy::new(|| File::open("audio/turnPage2.ogg").unwrap());
+pub fn set_bgm(bgm_sink: &Sink) {
+  let buf1 = Cursor::new(include_bytes!("../audio/bgm.ogg").to_vec());
+  let buf2 = Cursor::new(include_bytes!("../audio/bgm.ogg").to_vec());
 
-pub fn set_bgm(sink: &Sink) {
-  let src_start = rodio::Decoder::new(BufReader::new(&*BGM1)).unwrap();
-  let src_loop = rodio::Decoder::new(BufReader::new(&*BGM2)).unwrap();
+  let src_start = rodio::Decoder::new(buf1).unwrap();
+  let src_loop = rodio::Decoder::new(buf2).unwrap();
 
   let src_loop = src_loop.skip_duration(Duration::from_millis(5506)).repeat_infinite();
 
-  sink.append(src_start);
-  sink.append(src_loop);
+  bgm_sink.append(src_start);
+  bgm_sink.append(src_loop);
 
-  sink.pause();
+  bgm_sink.pause();
 
   loop {
     println!("Loop start");
@@ -39,14 +34,27 @@ pub fn play_bgm(sink: &Sink, volume: f32) {
   sink.play();
 }
 
-pub fn play_se(sink: &Sink, file_name: String, volume: f32) {
-  let src = match &*file_name {
-    "bell" => rodio::Decoder::new(BufReader::new(&*BELL)).unwrap(),
-    "turnPage1" => rodio::Decoder::new(BufReader::new(&*TURN_PAGE1)).unwrap(),
-    "turnPage2" => rodio::Decoder::new(BufReader::new(&*TURN_PAGE2)).unwrap(),
-    _ => { return },
-  };
+#[derive(Clone, Debug)]
+pub struct SoundEffect {
+  pub bell: Cursor<std::vec::Vec<u8>>,
+  pub turn_page1: Cursor<std::vec::Vec<u8>>,
+  pub turn_page2: Cursor<std::vec::Vec<u8>>,
+}
 
-  sink.append(src);
-  sink.set_volume(volume);
+impl SoundEffect {
+  pub fn play_se(self, sink: &mut Sink, handle: &OutputStreamHandle, file_name: String, volume: f32) {
+    *sink = rodio::Sink::try_new(handle).unwrap();
+
+    let buf = match &*file_name {
+      "bell" => self.bell,
+      "turnPage1" => self.turn_page1,
+      "turnPage2" => self.turn_page2,
+      _ => { return },
+    };
+
+    let src = rodio::Decoder::new(buf).unwrap();
+
+    sink.set_volume(volume);
+    sink.append(src);
+  }
 }
