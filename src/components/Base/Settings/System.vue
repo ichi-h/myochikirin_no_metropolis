@@ -159,39 +159,34 @@ input[type=range] {
   -webkit-appearance: none;
   width: 50%;
 }
+
   input[type=range]:focus {
     outline: none;
+  }
+
+  input[type=range]::-webkit-slider-thumb,
+  input[type=range]::-ms-thumb {
+    width: 2.8rem;
+    height: 2.8rem;
+    background-color: #fbfaf5;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    ::-webkit-full-page-media, _:future, :root input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance:none;
+      margin-top: 1.3rem;
+    }
   }
 
   input[type=range]::-ms-track {
     width: 100%;
     cursor: pointer;
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
+    background: #fbfaf5;
+    border: none;
+    height: 1px;
   }
-  input[type=range]::-webkit-slider-thumb,
-  input[type=range]::-ms-thumb {
-    width: 2rem;
-    height: 2rem;
-    background-color: #fbfaf5;
-    border-radius: 1em;
-    border: 1px solid #fbfaf5;
-    cursor: pointer;
-  }
-
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance:none;
-
-      width: 2rem;
-      height: 2rem;
-      background-color: #fbfaf5;
-      border-radius: 1em;
-      border: 1px solid #fbfaf5;
-      cursor: pointer;
-
-      margin-top: 1.3rem;
-    }
 
   input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
@@ -199,11 +194,5 @@ input[type=range] {
     height: 2em;
     border-bottom: 2px solid #fbfaf5;
     background-color: transparent;
-  }
-
-  input[type=range]::-ms-track {
-    background: #fbfaf5;
-    border: none;
-    height: 1px;
   }
 </style>
