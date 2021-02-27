@@ -83,6 +83,7 @@ export default {
         volume: SaveData.methods.getBGMVol()
       })
     }
+
     const p5 = async function() {
       let appClassList = document.getElementById('app').classList
 
