@@ -9,7 +9,26 @@ mod audio;
 use std::sync::{Arc, Mutex};
 use std::io::Cursor;
 
+fn set_app_dir() {
+  let pwd = std::env::current_exe().expect("could not get current app directory");
+  let pwd_string = format!("{:?}", pwd).to_string();
+
+  let pwd_rev = pwd_string.chars().rev().collect::<String>();
+  let before = "MacOS/myochikirin_no_metropolis".chars().rev().collect::<String>();
+  let after = "Resources".chars().rev().collect::<String>();
+
+  let savedata_dir_rev = pwd_rev.replacen(&*before, &*after, 1);
+  let mut savedata_dir = savedata_dir_rev.chars().rev().collect::<String>();
+  savedata_dir.retain(|c| c != '"');
+
+  let path = std::path::Path::new(&*savedata_dir);
+  std::env::set_current_dir(path).expect("could not move Resources directory");
+}
+
 fn main() {
+  // set_app_dir();
+  // uncomment this on the release build
+
   let (_stream, handle) = rodio::OutputStream::try_default().unwrap();
   let bgm_sink = Arc::new(rodio::Sink::try_new(&handle).unwrap());
   let se_sink = Arc::new(Mutex::new(rodio::Sink::try_new(&handle).unwrap()));
