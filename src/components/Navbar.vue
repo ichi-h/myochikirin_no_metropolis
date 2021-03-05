@@ -2,6 +2,7 @@
   <div class="nav">
     <a @click="movePage('home')"><span class="item">ホーム</span></a>
     <a @click="movePage('gallery')"><span class="item">ギャラリー</span></a>
+    <a @click="movePage('afterword')" v-if="this.afterwordBool === true"><span class="item">あとがき</span></a>
     <a @click="movePage('settings')"><span class="item">設定</span></a>
   </div>
 </template>
@@ -16,6 +17,16 @@ export default {
     SaveData() {
       return SaveData
     },
+  },
+  data() {
+    return {
+      afterwordBool: Boolean,
+    }
+  },
+  mounted: function() {
+    let array = SaveData.methods.getCompleteRate().slice(0, 7)
+    const test = (value) => value === true
+    this.afterwordBool = array.every(test)
   },
   methods: {
     movePage: function(id) {
