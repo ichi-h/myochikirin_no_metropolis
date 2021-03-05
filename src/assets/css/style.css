@@ -32,7 +32,7 @@ h2 {
   margin-bottom: 1.4rem;
 }
 
-.home, .gallery, .settings, .content {
+.home, .gallery, .afterword, .settings, .content {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -89,3 +89,30 @@ h2 {
   @keyframes fadeout {
     100% { opacity: 0; }
   }
+
+/*
+  Scrollbar
+*/
+.ps__rail-y {
+  width: 0.9rem;
+  opacity: 0.6 !important;
+}
+
+.ps__thumb-y,
+.ps__rail-y:hover > .ps__thumb-y,
+.ps__rail-y:focus > .ps__thumb-y,
+.ps__rail-y.ps--clicking .ps__thumb-y {
+  background-color: #fbfaf5;
+  width: 0.9rem;
+}
+
+.ps-scrollbar-y-hover-width {
+  width: 0.9rem;
+}
+
+.ps .ps__rail-y:hover,
+.ps .ps__rail-y:focus,
+.ps .ps__rail-y.ps--clicking {
+  background: none !important;
+  opacity: 0.8 !important;
+}

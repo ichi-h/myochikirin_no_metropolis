@@ -80,7 +80,7 @@ export default {
 </script>
 
 <style>
-.ps {
+.credit .ps {
   height: 60vh;
 }
 
@@ -126,29 +126,4 @@ export default {
         font-size: 2rem;
         border-bottom: 1px dashed #fbfaf5;
       }
-
-.ps__rail-y {
-  width: 0.9rem;
-  opacity: 0.6 !important;
-}
-
-.ps__thumb-y,
-.ps__rail-y:hover > .ps__thumb-y,
-.ps__rail-y:focus > .ps__thumb-y,
-.ps__rail-y.ps--clicking .ps__thumb-y {
-  background-color: #fbfaf5;
-  width: 0.9rem;
-}
-
-.ps-scrollbar-y-hover-width {
-  width: 0.9rem;
-}
-
-.ps .ps__rail-y:hover,
-.ps .ps__rail-y:focus,
-.ps .ps__rail-y.ps--clicking {
-  background: none !important;
-  opacity: 0.8 !important;
-}
-
 </style>
