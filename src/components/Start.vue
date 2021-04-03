@@ -17,8 +17,7 @@ import Images from '@/mixins/Images'
 export default {
   name: 'start',
   props: {
-    loaded: Object,
-    message: Object,
+    loaded: Object
   },
   computed: {
     AppRef() {
@@ -33,7 +32,7 @@ export default {
   },
   mounted : function() {
     let loaded = this.loaded
-    let message = this.message
+    let startRef = this.$refs.start
 
     let jsonPromise
     let jsonObj
@@ -118,8 +117,6 @@ export default {
         startElm.innerHTML = ''
         
         loaded.bool = true
-
-        message.elm.style.visibility = 'visible'
 
         let appRef = AppRef.methods.getRef()
         appRef.style.background = "none"

@@ -5,7 +5,7 @@
       ref="app"
       :style="'background-image: url(' + Images.bg + ');'"
     >
-      <router-view :index="index" :loaded="loaded" :message="message"></router-view>
+      <router-view :index="index" :loaded="loaded"></router-view>
 
       <div class="msg" ref="msg">
         <msg></msg>
@@ -37,14 +37,11 @@ export default {
   data() {
     return {
       index: { i: Number },
-      loaded: { bool: false },
-      message: { elm: undefined },
+      loaded: { bool: false }
     }
   },
   mounted: function() {
     AppRef.methods.setRef(this.$refs.app)
-
-    this.message.elm = this.$refs.msg
 
     this.changeFontSize()
     window.addEventListener('resize', this.changeFontSize, false)
