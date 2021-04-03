@@ -2,23 +2,24 @@
   <div style="position: relative;">
     <div
       class="app"
-      id="app"
+      ref="app"
       :style="'background-image: url(' + Images.bg + ');'"
     >
-      <router-view :index="index" :loaded="loaded" :message="message"></router-view>
+      <router-view :index="index" :loaded="loaded"></router-view>
 
-      <div class="msg" id="msg">
+      <div class="msg" ref="msg">
         <msg></msg>
       </div>
     </div>
 
-    <div v-if="loaded.bool !== true" class="loading blinking" id="loading">
+    <div v-if="loaded.bool !== true" class="loading blinking" ref="loading">
       <p>NOW LOADING...</p>
     </div>
   </div>
 </template>
 
 <script>
+import AppRef from '@/mixins/AppRef'
 import Images from '@/mixins/Images'
 import Msg from '@/components/Msg'
 
@@ -29,16 +30,18 @@ export default {
     Images() {
       return Images
     },
+    AppRef() {
+      return AppRef
+    }
   },
   data() {
     return {
       index: { i: Number },
-      loaded: { bool: false },
-      message: { elm: undefined },
+      loaded: { bool: false }
     }
   },
   mounted: function() {
-    this.message.elm = document.getElementById('msg')
+    AppRef.methods.setRef(this.$refs.app)
 
     this.changeFontSize()
     window.addEventListener('resize', this.changeFontSize, false)

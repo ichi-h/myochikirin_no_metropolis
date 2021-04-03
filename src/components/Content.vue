@@ -1,12 +1,12 @@
 <template>
-  <div class="content" id="content" @click="turnText()">
+  <div class="content" ref="content" @click="turnText()">
     <img class="top-image" :src="Images.img[index.i]" alt="" draggable="false">
     <h1>{{ ShortStories[index.i].title }}</h1>
     <p
       v-for="j in ShortStories[index.i].content.length + 1"
       :key="j"
       class="p-text"
-      :id="'p-text' + (j-1)"
+      :ref="'p-text' + (j-1)"
       style="opacity: 0;"
     >
       {{ ShortStories[index.i].content[j-1] }}
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import AppRef from '@/mixins/AppRef'
 import SaveData from '@/mixins/SaveData'
 import ShortStories from '@/mixins/ShortStories'
 import Images from '@/mixins/Images'
@@ -23,6 +24,9 @@ export default {
   name: 'content',
   props: { index: Object },
   computed: {
+    AppRef() {
+      return AppRef
+    },
     SaveData() {
       return SaveData
     },
@@ -43,7 +47,8 @@ export default {
   },
 
   mounted : function() {
-    let appClassList = document.getElementById('app').classList
+    let appRef = AppRef.methods.getRef()
+    let appClassList = appRef.classList
 
     if (appClassList.contains('fadein-long')) {
       appClassList.remove('fadein-long')
@@ -61,7 +66,7 @@ export default {
       if (this.textLineNum == ShortStories[this.index.i].content.length &&
           this.toggle == true)
       {
-        document.getElementById('content').style.pointerEvents = 'none'
+        this.$refs.content.style.pointerEvents = 'none'
 
         let array = SaveData.methods.getCompleteRate()
         array[this.index.i] = true
@@ -69,7 +74,8 @@ export default {
         SaveData.methods.setCompleteRate(array)
         SaveData.methods.save()
 
-        document.getElementById('app').classList.add('fadeout-long')
+        let appRef = AppRef.methods.getRef()
+        appRef.classList.add('fadeout-long')
         setTimeout(function() {
           this.$router.push('/base')
         }.bind(this), 3000)
@@ -82,7 +88,7 @@ export default {
 
         let speed = 140 - SaveData.methods.getTextSpeed()
 
-        let pText = document.getElementById('p-text' + this.textLineNum)
+        let pText = this.$refs['p-text' + this.textLineNum][0]
 
         let txt_str = pText.innerHTML
         let txt_array = txt_str.split('')
@@ -119,7 +125,7 @@ export default {
       else {
         clearTimeout(this.timeoutFunc)
 
-        let pText = document.getElementById('p-text' + (this.textLineNum - 1))
+        let pText = this.$refs['p-text' + (this.textLineNum - 1)][0]
         pText.innerHTML = ShortStories[this.index.i].content[this.textLineNum-1]
 
         this.turnOnToggle()
