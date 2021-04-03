@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      appRef: undefined
+      appRef: Object
     }
   },
   methods: {
