@@ -88,7 +88,7 @@ export default {
 
         let speed = 140 - SaveData.methods.getTextSpeed()
 
-        let pText = this.$refs['p-text' + this.textLineNum]
+        let pText = this.$refs['p-text' + this.textLineNum][0]
 
         let txt_str = pText.innerHTML
         let txt_array = txt_str.split('')
@@ -125,7 +125,7 @@ export default {
       else {
         clearTimeout(this.timeoutFunc)
 
-        let pText = this.$refs['p-text' + (this.textLineNum - 1)]
+        let pText = this.$refs['p-text' + (this.textLineNum - 1)][0]
         pText.innerHTML = ShortStories[this.index.i].content[this.textLineNum-1]
 
         this.turnOnToggle()
