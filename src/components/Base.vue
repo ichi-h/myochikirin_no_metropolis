@@ -1,9 +1,9 @@
 <template>
   <div class="base" ref="base">
-    <home v-if="selector.value === 'home'" :index="index"></home>
-    <gallery v-if="selector.value === 'gallery'"></gallery>
-    <afterword v-if="selector.value === 'afterword'"></afterword>
-    <settings v-if="selector.value === 'settings'"></settings>
+    <home ref="base-home" v-if="selector.value === 'base-home'" :index="index"></home>
+    <gallery ref="base-gallery" v-if="selector.value === 'base-gallery'"></gallery>
+    <afterword ref="base-afterword" v-if="selector.value === 'base-afterword'"></afterword>
+    <settings ref="base-settings" v-if="selector.value === 'base-settings'"></settings>
 
     <navbar :selector="selector"></navbar>
   </div>
@@ -28,12 +28,23 @@ export default {
   },
   data() {
     return {
-      selector: { value: 'home'},
+      selector: { value: 'base-home'}
     }
   },
+  watch: {
+    selector: {
+      handler: function(newVal, _) {
+        setTimeout(function() {
+          window.currentRef = this.$refs[newVal.value].$el
+        }.bind(this), 100)
+      },
+      deep: true
+    },
+  },
   mounted: function() {
-    let appRef = AppRef.methods.getRef()
+    window.currentRef = this.$refs[this.selector.value].$el
 
+    let appRef = AppRef.methods.getRef()
     let appClassList = appRef.classList
 
     if (appClassList.contains('fadein-long')) {
