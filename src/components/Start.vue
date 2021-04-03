@@ -98,7 +98,7 @@ export default {
       }
 
       appClassList.add('fadein-long')
-      this.$refs.start.style.pointerEvents = 'auto'
+      startRef.style.pointerEvents = 'auto'
     }
 
     const processAll = async function() {
@@ -111,11 +111,10 @@ export default {
 
     checkBrowser()
       .then(processAll)
-      .catch((e) => {
-        let startElm = this.$refs.start
-        startElm.style.background = 'none'
-        startElm.innerHTML = ''
-        
+      .catch(() => {
+        startRef.style.background = 'none'
+        startRef.innerHTML = ''
+
         loaded.bool = true
 
         let appRef = AppRef.methods.getRef()
