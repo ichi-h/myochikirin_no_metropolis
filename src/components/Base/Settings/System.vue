@@ -3,15 +3,15 @@
     <h1>設定</h1>
     <div class="system-item">
       <h2>BGM音量</h2>
-      <input type="range" name="bgm-vol" ref="bgm-vol" min="0" max="1" step="0.05">
+      <input v-on:change="updateBGMVol" type="range" name="bgm-vol" ref="bgm-vol" min="0" max="1" step="0.05">
     </div>
     <div class="system-item">
       <h2>SE音量</h2>
-      <input type="range" name="se-vol" ref="se-vol" min="0" max="1" step="0.05">
+      <input v-on:change="updateSEVol" type="range" name="se-vol" ref="se-vol" min="0" max="1" step="0.05">
     </div>
     <div class="system-item">
       <h2>文字表示速度</h2>
-      <input type="range" name="text-speed" ref="text-speed" min="0" max="140" step="7">
+      <input v-on:change="updateTextSpeed" type="range" name="text-speed" ref="text-speed" min="0" max="140" step="7">
       <div class="preview">
         <p class="demo-text" ref="demo-text">メッセージ表示テストメッセージ表示テスト</p>
       </div>
@@ -31,9 +31,9 @@ export default {
   },
   data() {
     return {
-      bgmFader: Element,
-      seFader: Element,
-      textFader: Element,
+      bgmFader: Object,
+      seFader: Object,
+      textFader: Object,
       repeatTextTimer: undefined,
     }
   },
@@ -71,7 +71,7 @@ export default {
     },
 
     previewDemoText: function() {
-      let pText = this.$refs.demo-text
+      let pText = this.$refs["demo-text"]
 
       if (this.textFader.value == 140) {
         clearInterval(this.repeatTextTimer)
@@ -111,26 +111,19 @@ export default {
   },
 
   mounted: function() {
-    this.bgmFader = this.$refs.bgm-vol
-    this.seFader = this.$refs.se-vol
-    this.textFader = this.$refs.text-speed
+    this.bgmFader = this.$refs["bgm-vol"]
+    this.seFader = this.$refs["se-vol"]
+    this.textFader = this.$refs["text-speed"]
 
     this.bgmFader.value = SaveData.methods.getBGMVol()
     this.seFader.value = SaveData.methods.getSEVol()
     this.textFader.value = SaveData.methods.getTextSpeed()
-
-    this.bgmFader.addEventListener('change', this.updateBGMVol, false)
-    this.seFader.addEventListener('change', this.updateSEVol, false)
-    this.textFader.addEventListener('change', this.updateTextSpeed, false)
 
     this.previewDemoText()
     this.repeatTextTimer = setInterval(this.previewDemoText, 25*(140 - this.textFader.value))
   },
 
   destroyed: function() {
-    this.bgmFader.removeEventListener('change', this.updateBGMVol, false)
-    this.seFader.removeEventListener('change', this.updateSEVol, false)
-    this.textFader.removeEventListener('change', this.updateTextSpeed, false)
     clearInterval(this.repeatTextTimer)
   }
 }
