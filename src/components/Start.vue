@@ -1,7 +1,7 @@
 <template>
   <div
     class="start"
-    id="start"
+    ref="start"
     @click="startGame()"
     :style="'background-image: url(' + Images.theme + ');'"
   >
@@ -99,7 +99,7 @@ export default {
       }
 
       appClassList.add('fadein-long')
-      document.getElementById('start').style.pointerEvents = 'auto'
+      this.$refs.start.style.pointerEvents = 'auto'
     }
 
     const processAll = async function() {
@@ -113,7 +113,7 @@ export default {
     checkBrowser()
       .then(processAll)
       .catch((e) => {
-        let startElm = document.getElementById('start')
+        let startElm = this.$refs.start
         startElm.style.background = 'none'
         startElm.innerHTML = ''
         
@@ -128,7 +128,7 @@ export default {
   },
   methods: {
     startGame: function() {
-      document.getElementById('start').style.pointerEvents = 'none'
+      this.$refs.start.style.pointerEvents = 'none'
 
       window.__TAURI__.tauri.invoke({
         cmd: 'playSE',

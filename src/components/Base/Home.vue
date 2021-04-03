@@ -1,8 +1,8 @@
 <template>
-  <div class="home" id="home">
+  <div class="home" ref="home">
     <h1>ホーム</h1>
 
-    <div class="titles" id="titles">
+    <div class="titles" ref="titles">
       <ul>
         <li class="title" v-for="shortStory in ShortStories" :key="shortStory.title">
           <a @click="toContent(shortStory.index)">{{ shortStory.title }}</a>
@@ -32,11 +32,11 @@ export default {
     },
   },
   mounted: function() {
-    document.getElementById('home').classList.add('fadein')
+    this.$refs.home.classList.add('fadein')
   },
   methods: {
     toContent: function(idx) {
-      document.getElementById('titles').style.pointerEvents = 'none'
+      this.$refs.titles.style.pointerEvents = 'none'
 
       this.index.i = Number(idx)
 

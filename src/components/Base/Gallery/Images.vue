@@ -5,7 +5,7 @@
       <div v-for="i in 9" :key="i" class="image-button">
         <img 
           @click="clickedGrid('grid-' + i)"
-          :id="'grid-' + i"
+          :ref="'grid-' + i"
           src=""
           :alt="i"
           draggable="false"
@@ -13,9 +13,9 @@
       </div>
     </div>
 
-    <div class="popup" id="js-popup">
+    <div class="popup" ref="js-popup">
       <div class="popup-inner">
-        <a><img @click="clickedImage()" src="" id="popup-image"></a>
+        <a><img @click="clickedImage()" src="" ref="popup-image"></a>
       </div>
     </div>
   </div>
@@ -44,7 +44,7 @@ export default {
     this.completeRateArray = SaveData.methods.getCompleteRate()
 
     for (let i = 0; i < this.completeRateArray.length; i++) {
-      let imgElm = document.getElementById('grid-' + (i+1))
+      let imgElm = this.$refs['grid-' + (i+1)]
       
       if (this.completeRateArray[i]) {
         imgElm.src = Images.img[i]
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     clickedImage: function() {
-      let popup = document.getElementById('js-popup')
+      let popup = this.$refs.js-popup
       popup.classList.remove('is-show')
     },
     clickedGrid: function(gridId) {
@@ -66,9 +66,9 @@ export default {
         return
       }
 
-      let image = document.getElementById(gridId).getAttribute('src');
+      let image = this.$refs.gridId.getAttribute('src');
 
-      let popupImage = document.getElementById('popup-image');
+      let popupImage = this.$refs.popup-image;
       popupImage.setAttribute('src', image);
 
 
@@ -78,7 +78,7 @@ export default {
         volume: SaveData.methods.getSEVol()
       })
       
-      document.getElementById('js-popup').classList.add('is-show');
+      this.$refs.js-popup.classList.add('is-show');
     }
   }
 }

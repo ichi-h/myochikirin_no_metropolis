@@ -1,5 +1,5 @@
 <template>
-  <div class="afterword" id="afterword">
+  <div class="afterword" ref="afterword">
     <h1>あとがき</h1>
     <perfect-scrollbar>
       <h2>0. はじめに</h2>
@@ -247,7 +247,7 @@
 export default {
   name: 'afterword',
   mounted: function() {
-    document.getElementById('afterword').classList.add('fadein')
+    this.$refs.afterword.classList.add('fadein')
   },
 }
 </script>

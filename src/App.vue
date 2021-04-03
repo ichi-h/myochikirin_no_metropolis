@@ -7,12 +7,12 @@
     >
       <router-view :index="index" :loaded="loaded" :message="message"></router-view>
 
-      <div class="msg" id="msg">
+      <div class="msg" ref="msg">
         <msg></msg>
       </div>
     </div>
 
-    <div v-if="loaded.bool !== true" class="loading blinking" id="loading">
+    <div v-if="loaded.bool !== true" class="loading blinking" ref="loading">
       <p>NOW LOADING...</p>
     </div>
   </div>
@@ -44,7 +44,7 @@ export default {
   mounted: function() {
     AppRef.methods.setRef(this.$refs.app)
 
-    this.message.elm = document.getElementById('msg')
+    this.message.elm = this.$refs.msg
 
     this.changeFontSize()
     window.addEventListener('resize', this.changeFontSize, false)

@@ -1,5 +1,5 @@
 <template>
-  <div class="base" id="base">
+  <div class="base" ref="base">
     <home v-if="selector.value === 'home'" :index="index"></home>
     <gallery v-if="selector.value === 'gallery'"></gallery>
     <afterword v-if="selector.value === 'afterword'"></afterword>

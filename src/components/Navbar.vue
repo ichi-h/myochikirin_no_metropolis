@@ -32,7 +32,7 @@ export default {
     movePage: function(id) {
       if (this.selector.value === id) return
 
-      let currentElm = document.getElementById(this.selector.value)
+      let currentElm = this.$refs[this.selector.value]
       currentElm.classList.add('fadeout')
 
       window.__TAURI__.tauri.invoke({

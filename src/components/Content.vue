@@ -1,12 +1,12 @@
 <template>
-  <div class="content" id="content" @click="turnText()">
+  <div class="content" ref="content" @click="turnText()">
     <img class="top-image" :src="Images.img[index.i]" alt="" draggable="false">
     <h1>{{ ShortStories[index.i].title }}</h1>
     <p
       v-for="j in ShortStories[index.i].content.length + 1"
       :key="j"
       class="p-text"
-      :id="'p-text' + (j-1)"
+      :ref="'p-text' + (j-1)"
       style="opacity: 0;"
     >
       {{ ShortStories[index.i].content[j-1] }}
@@ -66,7 +66,7 @@ export default {
       if (this.textLineNum == ShortStories[this.index.i].content.length &&
           this.toggle == true)
       {
-        document.getElementById('content').style.pointerEvents = 'none'
+        this.$refs.content.style.pointerEvents = 'none'
 
         let array = SaveData.methods.getCompleteRate()
         array[this.index.i] = true
@@ -88,7 +88,7 @@ export default {
 
         let speed = 140 - SaveData.methods.getTextSpeed()
 
-        let pText = document.getElementById('p-text' + this.textLineNum)
+        let pText = this.$refs['p-text' + this.textLineNum]
 
         let txt_str = pText.innerHTML
         let txt_array = txt_str.split('')
@@ -125,7 +125,7 @@ export default {
       else {
         clearTimeout(this.timeoutFunc)
 
-        let pText = document.getElementById('p-text' + (this.textLineNum - 1))
+        let pText = this.$refs['p-text' + (this.textLineNum - 1)]
         pText.innerHTML = ShortStories[this.index.i].content[this.textLineNum-1]
 
         this.turnOnToggle()
