@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import AppRef from '@/mixins/AppRef'
 import SaveData from '@/mixins/SaveData'
 import Images from '@/mixins/Images'
 
@@ -20,6 +21,9 @@ export default {
     message: Object,
   },
   computed: {
+    AppRef() {
+      return AppRef
+    },
     SaveData() {
       return SaveData
     },
@@ -84,7 +88,8 @@ export default {
       })
     }
     const p5 = async function() {
-      let appClassList = document.getElementById('app').classList
+      let appRef = AppRef.methods.getRef()
+      let appClassList = appRef.classList
 
       if (appClassList.contains('fadein-long')) {
         appClassList.remove('fadein-long')
@@ -116,9 +121,9 @@ export default {
 
         message.elm.style.visibility = 'visible'
 
-        let appElm = document.getElementById('app')
-        appElm.style.background = "none"
-        appElm.classList.add('fadein-long')
+        let appRef = AppRef.methods.getRef()
+        appRef.style.background = "none"
+        appRef.classList.add('fadein-long')
       })
   },
   methods: {
@@ -131,7 +136,8 @@ export default {
         volume: SaveData.methods.getSEVol()
       })
 
-      document.getElementById('app').classList.add('fadeout-long')
+      let appRef = AppRef.methods.getRef()
+      appRef.classList.add('fadeout-long')
       setTimeout(function() {
         this.$router.push('/base')
       }.bind(this), 3000)

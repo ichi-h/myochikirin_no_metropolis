@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import AppRef from '@/mixins/AppRef'
 import Home from './Base/Home'
 import Gallery from './Base/Gallery'
 import Afterword from './Base/Afterword'
@@ -20,13 +21,20 @@ export default {
   name: 'base',
   props: { index: Object },
   components: { Home, Gallery, Afterword, Settings, Navbar },
+  computed: {
+    AppRef() {
+      return AppRef
+    }
+  },
   data() {
     return {
       selector: { value: 'home'},
     }
   },
   mounted: function() {
-    let appClassList = document.getElementById('app').classList
+    let appRef = AppRef.methods.getRef()
+
+    let appClassList = appRef.classList
 
     if (appClassList.contains('fadein-long')) {
       appClassList.remove('fadein-long')

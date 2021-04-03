@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import AppRef from '@/mixins/AppRef'
 import SaveData from '@/mixins/SaveData'
 import ShortStories from '@/mixins/ShortStories'
 import Images from '@/mixins/Images'
@@ -23,6 +24,9 @@ export default {
   name: 'content',
   props: { index: Object },
   computed: {
+    AppRef() {
+      return AppRef
+    },
     SaveData() {
       return SaveData
     },
@@ -43,7 +47,8 @@ export default {
   },
 
   mounted : function() {
-    let appClassList = document.getElementById('app').classList
+    let appRef = AppRef.methods.getRef()
+    let appClassList = appRef.classList
 
     if (appClassList.contains('fadein-long')) {
       appClassList.remove('fadein-long')
@@ -69,7 +74,8 @@ export default {
         SaveData.methods.setCompleteRate(array)
         SaveData.methods.save()
 
-        document.getElementById('app').classList.add('fadeout-long')
+        let appRef = AppRef.methods.getRef()
+        appRef.classList.add('fadeout-long')
         setTimeout(function() {
           this.$router.push('/base')
         }.bind(this), 3000)

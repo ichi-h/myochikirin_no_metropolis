@@ -2,7 +2,7 @@
   <div style="position: relative;">
     <div
       class="app"
-      id="app"
+      ref="app"
       :style="'background-image: url(' + Images.bg + ');'"
     >
       <router-view :index="index" :loaded="loaded" :message="message"></router-view>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import AppRef from '@/mixins/AppRef'
 import Images from '@/mixins/Images'
 import Msg from '@/components/Msg'
 
@@ -29,6 +30,9 @@ export default {
     Images() {
       return Images
     },
+    AppRef() {
+      return AppRef
+    }
   },
   data() {
     return {
@@ -38,6 +42,8 @@ export default {
     }
   },
   mounted: function() {
+    AppRef.methods.setRef(this.$refs.app)
+
     this.message.elm = document.getElementById('msg')
 
     this.changeFontSize()

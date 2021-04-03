@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import AppRef from '@/mixins/AppRef'
 import SaveData from '@/mixins/SaveData'
 import ShortStories from '@/mixins/ShortStories'
 
@@ -20,6 +21,9 @@ export default {
   name: 'home',
   props: { index: Object },
   computed: {
+    AppRef() {
+      return AppRef
+    },
     SaveData() {
       return SaveData
     },
@@ -42,7 +46,8 @@ export default {
         volume: SaveData.methods.getSEVol()
       })
       
-      document.getElementById('app').classList.add('fadeout-long')
+      let appRef = AppRef.methods.getRef()
+      appRef.classList.add('fadeout-long')
       setTimeout(function() {
         this.$router.push('/content')
       }.bind(this), 3000)
