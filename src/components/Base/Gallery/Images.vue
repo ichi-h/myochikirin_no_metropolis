@@ -44,8 +44,8 @@ export default {
     this.completeRateArray = SaveData.methods.getCompleteRate()
 
     for (let i = 0; i < this.completeRateArray.length; i++) {
-      let imgElm = this.$refs['grid-' + (i+1)]
-      
+      let imgElm = this.$refs['grid-' + (i+1)][0]
+
       if (this.completeRateArray[i]) {
         imgElm.src = Images.img[i]
       }
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     clickedImage: function() {
-      let popup = this.$refs.js-popup
+      let popup = this.$refs["js-popup"]
       popup.classList.remove('is-show')
     },
     clickedGrid: function(gridId) {
@@ -66,9 +66,9 @@ export default {
         return
       }
 
-      let image = this.$refs.gridId.getAttribute('src');
+      let image = this.$refs[gridId][0].getAttribute('src');
 
-      let popupImage = this.$refs.popup-image;
+      let popupImage = this.$refs["popup-image"];
       popupImage.setAttribute('src', image);
 
 
@@ -78,7 +78,7 @@ export default {
         volume: SaveData.methods.getSEVol()
       })
       
-      this.$refs.js-popup.classList.add('is-show');
+      this.$refs["js-popup"].classList.add('is-show');
     }
   }
 }
