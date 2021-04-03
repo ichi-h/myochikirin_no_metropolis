@@ -19,6 +19,7 @@ import AppRef from '@/mixins/AppRef'
 import SaveData from '@/mixins/SaveData'
 import ShortStories from '@/mixins/ShortStories'
 import Images from '@/mixins/Images'
+import Text from '@/mixins/Text'
 
 export default {
   name: 'content',
@@ -35,6 +36,9 @@ export default {
     },
     Images() {
       return Images
+    },
+    Text() {
+      return Text
     },
   },
 
@@ -86,21 +90,17 @@ export default {
       if (this.toggle == true) {
         this.toggle = false
 
-        let speed = 140 - SaveData.methods.getTextSpeed()
+        const speed = Text.methods.getTrueTextSpeed()
 
         let pText = this.$refs['p-text' + this.textLineNum][0]
 
-        let txt_str = pText.innerHTML
-        let txt_array = txt_str.split('')
-        txt_array = this.deleteSpace(txt_array)
+        const txt_array = Text.methods.textToArray(pText.innerHTML)
 
         pText.innerHTML = ''
         pText.style.opacity = '1'
 
         for (let k = 0; k < txt_array.length; k++) {
-          let char = document.createElement('span')
-          char.classList.add('char')
-          char.innerHTML = txt_array[k]
+          const char = Text.methods.wrapLetterInSpan(txt_array[k])
 
           pText.append(char)
 
@@ -134,16 +134,6 @@ export default {
 
     turnOnToggle: function() {
       this.toggle = true
-    },
-
-    deleteSpace: function(array) {
-      let space = [' ']
-
-      array = array.filter(function(v) {
-        return ! space.includes(v)
-      })
-
-      return array
     },
   }
 }

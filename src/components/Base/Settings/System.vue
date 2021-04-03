@@ -11,7 +11,7 @@
     </div>
     <div class="system-item">
       <h2>文字表示速度</h2>
-      <input v-on:change="updateTextSpeed" type="range" name="text-speed" ref="text-speed" min="0" max="140" step="7">
+      <input v-on:change="updateTextSpeed" type="range" name="text-speed" ref="text-speed" min="0" :max="MAX_TEXT_SPEED" step="7">
       <div class="preview">
         <p class="demo-text" ref="demo-text">メッセージ表示テストメッセージ表示テスト</p>
       </div>
@@ -21,6 +21,7 @@
 
 <script>
 import SaveData from '@/mixins/SaveData'
+import Text from '@/mixins/Text'
 
 export default {
   name: 'system',
@@ -28,9 +29,13 @@ export default {
     SaveData() {
       return SaveData
     },
+    Text() {
+      return Text
+    },
   },
   data() {
     return {
+      MAX_TEXT_SPEED: Text.methods.getMaxTextSpeed(),
       bgmFader: Object,
       seFader: Object,
       textFader: Object,
@@ -66,47 +71,37 @@ export default {
       clearInterval(this.repeatTextTimer)
       SaveData.methods.setTextSpeed(this.textFader.value)
       this.previewDemoText()
-      this.repeatTextTimer = setInterval(this.previewDemoText, 25*(140 - this.textFader.value))
+
+      const speed = Text.methods.getTrueTextSpeed()
+      this.repeatTextTimer = setInterval(this.previewDemoText, 25*(speed))
       SaveData.methods.save()
     },
 
     previewDemoText: function() {
       let pText = this.$refs["demo-text"]
 
-      if (this.textFader.value == 140) {
+      if (this.textFader.value == this.MAX_TEXT_SPEED) {
         clearInterval(this.repeatTextTimer)
         pText.innerHTML = 'メッセージ表示テストメッセージ表示テスト'
         return
       }
 
-      pText.innerHTML = ''
-      let speed = 140 - this.textFader.value
+      const speed = Text.methods.getTrueTextSpeed()
 
-      let txt_str = 'メッセージ表示テストメッセージ表示テスト'
-      let txt_array = txt_str.split('')
-      txt_array = this.deleteSpace(txt_array)
+      const txt_array = Text.methods.textToArray('メッセージ表示テストメッセージ表示テスト')
+      console.log(txt_array);
+
+      pText.innerHTML = ''
 
       for (let k = 0; k < txt_array.length; k++) {
-        let char = document.createElement('span')
-        char.classList.add('char')
-        char.innerHTML = txt_array[k]
+        const char = Text.methods.wrapLetterInSpan(txt_array[k])
 
         pText.appendChild(char)
-        
+
         window.setTimeout(function() {
           char.style.opacity = 1
         }.bind(this), k*speed)
       }
-    },
-
-    deleteSpace: function(array) {
-      let space = [' ']
-
-      array = array.filter(function(v) {
-        return ! space.includes(v)
-      })
-
-      return array
     },
   },
 
@@ -119,8 +114,9 @@ export default {
     this.seFader.value = SaveData.methods.getSEVol()
     this.textFader.value = SaveData.methods.getTextSpeed()
 
+    const speed = Text.methods.getTrueTextSpeed()
     this.previewDemoText()
-    this.repeatTextTimer = setInterval(this.previewDemoText, 25*(140 - this.textFader.value))
+    this.repeatTextTimer = setInterval(this.previewDemoText, 25*(speed))
   },
 
   destroyed: function() {
