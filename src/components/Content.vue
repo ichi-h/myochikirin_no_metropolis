@@ -1,12 +1,12 @@
 <template>
-  <div class="content" id="content" @click="turnText()">
+  <div class="content" ref="content" @click="turnText()">
     <img class="top-image" :src="Images.img[index.i]" alt="" draggable="false">
     <h1>{{ ShortStories[index.i].title }}</h1>
     <p
       v-for="j in ShortStories[index.i].content.length + 1"
       :key="j"
       class="p-text"
-      :id="'p-text' + (j-1)"
+      :ref="'p-text' + (j-1)"
       style="opacity: 0;"
     >
       {{ ShortStories[index.i].content[j-1] }}
@@ -15,14 +15,19 @@
 </template>
 
 <script>
+import AppRef from '@/mixins/AppRef'
 import SaveData from '@/mixins/SaveData'
 import ShortStories from '@/mixins/ShortStories'
 import Images from '@/mixins/Images'
+import Text from '@/mixins/Text'
 
 export default {
   name: 'content',
   props: { index: Object },
   computed: {
+    AppRef() {
+      return AppRef
+    },
     SaveData() {
       return SaveData
     },
@@ -32,18 +37,22 @@ export default {
     Images() {
       return Images
     },
+    Text() {
+      return Text
+    },
   },
 
   data() {
     return {
       textLineNum: 0,
-      toggle: true,
-      timeoutFunc: undefined,
+      toggle: true, // 現在のセンテンスを表示完了: true, 文字送りの最中: false
+      timeoutFunc: undefined, // 文字送り完了の予約
     }
   },
 
   mounted : function() {
-    let appClassList = document.getElementById('app').classList
+    let appRef = AppRef.methods.getRef()
+    let appClassList = appRef.classList
 
     if (appClassList.contains('fadein-long')) {
       appClassList.remove('fadein-long')
@@ -60,8 +69,9 @@ export default {
     turnText: function() {
       if (this.textLineNum == ShortStories[this.index.i].content.length &&
           this.toggle == true)
+      // contentを全て表示し終えた場合
       {
-        document.getElementById('content').style.pointerEvents = 'none'
+        this.$refs.content.style.pointerEvents = 'none'
 
         let array = SaveData.methods.getCompleteRate()
         array[this.index.i] = true
@@ -69,7 +79,8 @@ export default {
         SaveData.methods.setCompleteRate(array)
         SaveData.methods.save()
 
-        document.getElementById('app').classList.add('fadeout-long')
+        let appRef = AppRef.methods.getRef()
+        appRef.classList.add('fadeout-long')
         setTimeout(function() {
           this.$router.push('/base')
         }.bind(this), 3000)
@@ -78,25 +89,23 @@ export default {
       }
 
       if (this.toggle == true) {
+      // 現在のセンテンスがすべて表示された状態でクリックされた場合
         this.toggle = false
 
-        let speed = 140 - SaveData.methods.getTextSpeed()
+        const speed = Text.methods.getTrueTextSpeed()
 
-        let pText = document.getElementById('p-text' + this.textLineNum)
+        let pText = this.$refs['p-text' + this.textLineNum][0]
 
-        let txt_str = pText.innerHTML
-        let txt_array = txt_str.split('')
-        txt_array = this.deleteSpace(txt_array)
+        const txt_array = Text.methods.textToArray(pText.innerHTML)
 
         pText.innerHTML = ''
         pText.style.opacity = '1'
 
         for (let k = 0; k < txt_array.length; k++) {
-          let char = document.createElement('span')
-          char.classList.add('char')
-          char.innerHTML = txt_array[k]
+          const char = Text.methods.wrapLetterInSpan(txt_array[k])
 
           pText.append(char)
+          // 文字が加えられた段階で、transitionによって1文字ずつフェードインする
 
           if (k != txt_array.length - 1) {
             window.setTimeout(function() {
@@ -109,7 +118,7 @@ export default {
             }.bind(this), k*speed)
 
             this.timeoutFunc = window.setTimeout(function() {
-              this.turnOnToggle()
+              this.turnOnToggle() // 文字送り完了
             }.bind(this), (k+1)*speed)
           }
         }
@@ -117,9 +126,10 @@ export default {
         this.textLineNum++
       }
       else {
-        clearTimeout(this.timeoutFunc)
+      // 文字送りの最中にクリックされた場合
+        clearTimeout(this.timeoutFunc) // 文字送り完了の予約を破棄
 
-        let pText = document.getElementById('p-text' + (this.textLineNum - 1))
+        let pText = this.$refs['p-text' + (this.textLineNum - 1)][0]
         pText.innerHTML = ShortStories[this.index.i].content[this.textLineNum-1]
 
         this.turnOnToggle()
@@ -128,16 +138,6 @@ export default {
 
     turnOnToggle: function() {
       this.toggle = true
-    },
-
-    deleteSpace: function(array) {
-      let space = [' ']
-
-      array = array.filter(function(v) {
-        return ! space.includes(v)
-      })
-
-      return array
     },
   }
 }
