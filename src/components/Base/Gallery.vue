@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery" id="gallery">
+  <div class="gallery" ref="gallery">
     <images></images>
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
   name: 'gallery',
   components: { Images },
   mounted: function() {
-    document.getElementById('gallery').classList.add('fadein')
+    this.$refs.gallery.classList.add('fadein')
   },
 }
 </script>

@@ -1,9 +1,9 @@
 <template>
-  <div class="nav">
-    <a @click="movePage('home')"><span class="item">ホーム</span></a>
-    <a @click="movePage('gallery')"><span class="item">ギャラリー</span></a>
-    <a @click="movePage('afterword')" v-if="this.afterwordBool === true"><span class="item">あとがき</span></a>
-    <a @click="movePage('settings')"><span class="item">設定</span></a>
+  <div class="nav" ref="nav">
+    <a @click="movePage('base-home')"><span class="item">ホーム</span></a>
+    <a @click="movePage('base-gallery')"><span class="item">ギャラリー</span></a>
+    <a @click="movePage('base-afterword')" v-if="this.afterwordBool === true"><span class="item">あとがき</span></a>
+    <a @click="movePage('base-settings')"><span class="item">設定</span></a>
   </div>
 </template>
 
@@ -12,7 +12,9 @@ import SaveData from '@/mixins/SaveData'
 
 export default {
   name: 'nav',
-  props: { selector: Object },
+  props: {
+    selector: Object
+  },
   computed: {
     SaveData() {
       return SaveData
@@ -32,8 +34,14 @@ export default {
     movePage: function(id) {
       if (this.selector.value === id) return
 
-      let currentElm = document.getElementById(this.selector.value)
-      currentElm.classList.add('fadeout')
+      this.$refs.nav.style.pointerEvents = 'none'
+
+      let refClassList = window.currentRef.classList
+
+      if (refClassList.contains('fadeout')) {
+        refClassList.remove('fadeout')
+      }
+      refClassList.add('fadeout')
 
       window.__TAURI__.tauri.invoke({
         cmd: 'playSE',
@@ -42,8 +50,11 @@ export default {
       })
 
       setTimeout(function() {
-        this.selector.value = id // change components
+        this.selector.value = id // コンポーネントの切り替え
       }.bind(this), 500)
+      setTimeout(function() {
+        this.$refs.nav.style.pointerEvents = 'auto'
+      }.bind(this), 800)
     }
   }
 }

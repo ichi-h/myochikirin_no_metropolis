@@ -1,8 +1,8 @@
 <template>
-  <div class="home" id="home">
+  <div class="home" ref="home">
     <h1>ホーム</h1>
 
-    <div class="titles" id="titles">
+    <div class="titles" ref="titles">
       <ul>
         <li class="title" v-for="shortStory in ShortStories" :key="shortStory.title">
           <a @click="toContent(shortStory.index)">{{ shortStory.title }}</a>
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import AppRef from '@/mixins/AppRef'
 import SaveData from '@/mixins/SaveData'
 import ShortStories from '@/mixins/ShortStories'
 
@@ -20,6 +21,9 @@ export default {
   name: 'home',
   props: { index: Object },
   computed: {
+    AppRef() {
+      return AppRef
+    },
     SaveData() {
       return SaveData
     },
@@ -28,11 +32,11 @@ export default {
     },
   },
   mounted: function() {
-    document.getElementById('home').classList.add('fadein')
+    this.$refs.home.classList.add('fadein')
   },
   methods: {
     toContent: function(idx) {
-      document.getElementById('titles').style.pointerEvents = 'none'
+      this.$refs.titles.style.pointerEvents = 'none'
 
       this.index.i = Number(idx)
 
@@ -42,7 +46,8 @@ export default {
         volume: SaveData.methods.getSEVol()
       })
       
-      document.getElementById('app').classList.add('fadeout-long')
+      let appRef = AppRef.methods.getRef()
+      appRef.classList.add('fadeout-long')
       setTimeout(function() {
         this.$router.push('/content')
       }.bind(this), 3000)

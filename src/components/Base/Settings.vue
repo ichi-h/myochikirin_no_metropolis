@@ -1,5 +1,5 @@
 <template>
-  <div class="settings" id="settings">
+  <div class="settings" ref="settings">
 
     <div class="split">
 
@@ -7,11 +7,26 @@
         <div class="selector">
           <ul>
             <li>
-              <input @click="updateSelectorValue()" id="radio-settings" type="radio" name="selector" value="system" checked>
+              <input
+                @click="updateSelectorValue()"
+                id="radio-settings"
+                ref="radio-settings"
+                type="radio"
+                name="selector"
+                value="system"
+                checked
+              >
               <label class="radio-label" for="radio-settings">設定</label>
             </li>
             <li>
-              <input @click="updateSelectorValue()" id="radio-credit" type="radio" name="selector" value="credit">
+              <input
+                @click="updateSelectorValue()"
+                id="radio-credit"
+                ref="radio-credit"
+                type="radio"
+                name="selector"
+                value="credit"
+              >
               <label class="radio-label" for="radio-credit">クレジット</label>
             </li>
           </ul>
@@ -46,11 +61,14 @@ export default {
     }
   },
   mounted: function() {
-    document.getElementById('settings').classList.add('fadein')
+    this.$refs.settings.classList.add('fadein')
   },
   methods: {
     updateSelectorValue: function() {
-      var elm = document.getElementsByName('selector')
+      let radioSettings = this.$refs["radio-settings"]
+      let radioCredit = this.$refs["radio-credit"]
+
+      var elm = [radioSettings, radioCredit]
       
       for (let i = 0; i < elm.length; i++) {
         if (elm[i].checked) {

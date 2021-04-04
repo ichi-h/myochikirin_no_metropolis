@@ -1,7 +1,7 @@
 <template>
   <div
     class="start"
-    id="start"
+    ref="start"
     @click="startGame()"
     :style="'background-image: url(' + Images.theme + ');'"
   >
@@ -10,16 +10,19 @@
 </template>
 
 <script>
+import AppRef from '@/mixins/AppRef'
 import SaveData from '@/mixins/SaveData'
 import Images from '@/mixins/Images'
 
 export default {
   name: 'start',
   props: {
-    loaded: Object,
-    message: Object,
+    loaded: Object
   },
   computed: {
+    AppRef() {
+      return AppRef
+    },
     SaveData() {
       return SaveData
     },
@@ -29,7 +32,7 @@ export default {
   },
   mounted : function() {
     let loaded = this.loaded
-    let message = this.message
+    let startRef = this.$refs.start
 
     let jsonPromise
     let jsonObj
@@ -84,7 +87,8 @@ export default {
       })
     }
     const p5 = async function() {
-      let appClassList = document.getElementById('app').classList
+      let appRef = AppRef.methods.getRef()
+      let appClassList = appRef.classList
 
       if (appClassList.contains('fadein-long')) {
         appClassList.remove('fadein-long')
@@ -94,7 +98,7 @@ export default {
       }
 
       appClassList.add('fadein-long')
-      document.getElementById('start').style.pointerEvents = 'auto'
+      startRef.style.pointerEvents = 'auto'
     }
 
     const processAll = async function() {
@@ -107,23 +111,20 @@ export default {
 
     checkBrowser()
       .then(processAll)
-      .catch((e) => {
-        let startElm = document.getElementById('start')
-        startElm.style.background = 'none'
-        startElm.innerHTML = ''
-        
+      .catch(() => {
+        startRef.style.background = 'none'
+        startRef.innerHTML = ''
+
         loaded.bool = true
 
-        message.elm.style.visibility = 'visible'
-
-        let appElm = document.getElementById('app')
-        appElm.style.background = "none"
-        appElm.classList.add('fadein-long')
+        let appRef = AppRef.methods.getRef()
+        appRef.style.background = "none"
+        appRef.classList.add('fadein-long')
       })
   },
   methods: {
     startGame: function() {
-      document.getElementById('start').style.pointerEvents = 'none'
+      this.$refs.start.style.pointerEvents = 'none'
 
       window.__TAURI__.tauri.invoke({
         cmd: 'playSE',
@@ -131,7 +132,8 @@ export default {
         volume: SaveData.methods.getSEVol()
       })
 
-      document.getElementById('app').classList.add('fadeout-long')
+      let appRef = AppRef.methods.getRef()
+      appRef.classList.add('fadeout-long')
       setTimeout(function() {
         this.$router.push('/base')
       }.bind(this), 3000)
