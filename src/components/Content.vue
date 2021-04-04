@@ -45,8 +45,8 @@ export default {
   data() {
     return {
       textLineNum: 0,
-      toggle: true,
-      timeoutFunc: undefined,
+      toggle: true, // 現在のセンテンスを表示完了: true, 文字送りの最中: false
+      timeoutFunc: undefined, // 文字送り完了の予約
     }
   },
 
@@ -69,6 +69,7 @@ export default {
     turnText: function() {
       if (this.textLineNum == ShortStories[this.index.i].content.length &&
           this.toggle == true)
+      // contentを全て表示し終えた場合
       {
         this.$refs.content.style.pointerEvents = 'none'
 
@@ -88,6 +89,7 @@ export default {
       }
 
       if (this.toggle == true) {
+      // 現在のセンテンスがすべて表示された状態でクリックされた場合
         this.toggle = false
 
         const speed = Text.methods.getTrueTextSpeed()
@@ -103,6 +105,7 @@ export default {
           const char = Text.methods.wrapLetterInSpan(txt_array[k])
 
           pText.append(char)
+          // 文字が加えられた段階で、transitionによって1文字ずつフェードインする
 
           if (k != txt_array.length - 1) {
             window.setTimeout(function() {
@@ -115,7 +118,7 @@ export default {
             }.bind(this), k*speed)
 
             this.timeoutFunc = window.setTimeout(function() {
-              this.turnOnToggle()
+              this.turnOnToggle() // 文字送り完了
             }.bind(this), (k+1)*speed)
           }
         }
@@ -123,7 +126,8 @@ export default {
         this.textLineNum++
       }
       else {
-        clearTimeout(this.timeoutFunc)
+      // 文字送りの最中にクリックされた場合
+        clearTimeout(this.timeoutFunc) // 文字送り完了の予約を破棄
 
         let pText = this.$refs['p-text' + (this.textLineNum - 1)][0]
         pText.innerHTML = ShortStories[this.index.i].content[this.textLineNum-1]
