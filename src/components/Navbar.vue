@@ -50,7 +50,7 @@ export default {
       })
 
       setTimeout(function() {
-        this.selector.value = id // change components
+        this.selector.value = id // コンポーネントの切り替え
       }.bind(this), 500)
       setTimeout(function() {
         this.$refs.nav.style.pointerEvents = 'auto'

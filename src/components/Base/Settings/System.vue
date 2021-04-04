@@ -39,7 +39,7 @@ export default {
       bgmFader: Object,
       seFader: Object,
       textFader: Object,
-      repeatTextTimer: undefined,
+      repeatTextTimer: undefined, // 文字送りをループするためのsetIntervalを格納する変数
     }
   },
 
