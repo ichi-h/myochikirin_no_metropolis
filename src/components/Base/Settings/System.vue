@@ -165,7 +165,14 @@ input[type=range] {
   @media screen and (-webkit-min-device-pixel-ratio: 0) {
     ::-webkit-full-page-media, _:future, :root input[type=range]::-webkit-slider-thumb {
       -webkit-appearance:none;
-      margin-top: 1.3rem;
+
+      width: 2.4rem;
+      height: 2.4rem;
+      background-color: #fbfaf5;
+      border-radius: 50%;
+      cursor: pointer;
+
+      margin-top: 1.1rem;
     }
   }
 
