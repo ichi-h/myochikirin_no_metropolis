@@ -3,6 +3,7 @@
 **「めうちきりんのメトロポリス」** は、文章生成にカットアップと自然言語処理の知見を活用した、ショートショート形式のサウンドノベルゲームです。  
 
 公式サイト: [https://myochikirin.ippee-music.com/](https://myochikirin.ippee-music.com/)  
+公式サイトリポジトリ: [https://github.com/ippee/novel_game_hp](https://github.com/ippee/novel_game_hp)  
 
 ![title](./assets/title.jpg)  
 
