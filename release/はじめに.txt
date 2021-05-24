@@ -2,7 +2,7 @@
 
 ## 説明
 - タイトル: めうちきりんのメトロポリス
-- バージョン: v1.0.1
+- バージョン: v1.0.2
 - 作者: いっぺー
 - 使用技術: Vue.js, tauri(Rust), etc.
 - URL:
@@ -16,11 +16,11 @@
 フォルダー内の「myochikirin_no_metropolis.exe」を立ち上げることでゲームが起動します。  
 
 ### Mac
-「myochikirin_no_metropolis_1.0.1_x64.dmg」を起動し、フォルダー内にある「myochikirin_no_metropolis_1.1.1_x64.app」を
+「myochikirin_no_metropolis_1.0.2_x64.dmg」を起動し、フォルダー内にある「myochikirin_no_metropolis_1.0.2_x64.app」を
 任意をフォルダーにドラッグ＆ドロップしてください。  
 そして、移動した.appファイルを立ち上げることでゲームが起動します。  
 
-その際、「“myochikirin_no_metropolis_1.0.1_x64.app”の開発元を検証できません。」といった警告文が表示される場合がございます。  
+その際、「“myochikirin_no_metropolis_1.0.2_x64.app”の開発元を検証できません。」といった警告文が表示される場合がございます。  
 もちろんこのゲームはパソコンに危害を加えるものではございませんが、もしお気になさる場合はプレイをご遠慮くださいますようお願いいたします。  
 
 プレイする場合には、.appをcontrolキーを押しながらクリックし、メニューから「開く」を選択してください。  
