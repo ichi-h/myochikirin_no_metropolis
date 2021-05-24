@@ -1014,7 +1014,7 @@ dependencies = [
 
 [[package]]
 name = "myochikirin_no_metropolis"
-version = "1.0.1"
+version = "1.0.2"
 dependencies = [
  "rodio",
  "serde",
