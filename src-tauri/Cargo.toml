@@ -2,7 +2,7 @@
 name = "myochikirin_no_metropolis"
 version = "1.0.2"
 description = "Game"
-authors = [ "you" ]
+authors = [ "Ippee" ]
 license = ""
 repository = ""
 default-run = "myochikirin_no_metropolis"
