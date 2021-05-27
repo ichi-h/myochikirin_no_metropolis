@@ -47,15 +47,11 @@ export default {
         }
       })
     }
-    
+
     const getJson = () => {
       return new Promise((resolve) => {
-        let jsonPromise = window.__TAURI__.fs.readTextFile('./savedata/savedata.json')
-        window.__TAURI__.tauri.invoke({
-          cmd: 'myCustomCommand',
-          arg: String(jsonPromise),
-        })
-        resolve(jsonPromise)
+        let json = window.__TAURI__.fs.readTextFile('./savedata/savedata.json')
+        resolve(json)
       });
     }
 
@@ -66,15 +62,17 @@ export default {
       SaveData.methods.setSEVol(jsonObj.seVol)
       SaveData.methods.setTextSpeed(jsonObj.textSpeed)
       SaveData.methods.setCompleteRate(jsonObj.complateRate)
+    }
 
-      // let array = Array(9).fill(false)
+    const createSavedata = async () => {
+      let array = new Array(9).fill(false)
 
-      // SaveData.methods.setBGMVol("0.5")
-      // SaveData.methods.setSEVol("1")
-      // SaveData.methods.setTextSpeed("91")
-      // SaveData.methods.setCompleteRate(array)
+      SaveData.methods.setBGMVol("0.5")
+      SaveData.methods.setSEVol("1")
+      SaveData.methods.setTextSpeed("91")
+      SaveData.methods.setCompleteRate(array)
 
-      // SaveData.methods.save()
+      SaveData.methods.save()
     }
 
     const finishLoad = async () => {
@@ -103,20 +101,21 @@ export default {
       startRef.style.pointerEvents = 'auto'
     }
 
-    const processAll = async () => {
-      await checkBrowser()
+    const loading = async () => {
       await getJson()
-        .then(async (jsonPromise) => {
-          await loadSavedata(jsonPromise)
-        })
-        .then(async () => {
-          await finishLoad()
-          await startBGM()
-          await fadein()
-        })
+        .then((jsonStr) => loadSavedata(jsonStr))
+        .catch(createSavedata)
     }
 
-    processAll()
+    const complate = async () => {
+      await finishLoad()
+      await startBGM()
+      await fadein()
+    }
+
+    checkBrowser()
+      .then(loading)
+      .then(complate)
       .catch((e) => {
         startRef.style.background = 'none'
         startRef.innerHTML = ''
