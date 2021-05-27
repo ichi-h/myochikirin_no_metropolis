@@ -20,5 +20,16 @@ export default {
 </script>
 
 <style>
+.msg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 50vh;
+  transform: translateY(-50%);
 
+  text-align: center;
+
+  width: 100vw;
+  z-index: -1;
+}
 </style>

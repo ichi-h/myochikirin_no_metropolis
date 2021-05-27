@@ -100,18 +100,4 @@ export default {
   
   transition: 1s;
 }
-
-.msg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-top: 50vh;
-  transform: translateY(-50%);
-
-  text-align: center;
-
-  width: 100vw;
-
-  visibility: hidden;
-}
 </style>
