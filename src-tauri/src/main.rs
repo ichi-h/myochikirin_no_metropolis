@@ -71,6 +71,5 @@ fn main() {
     });
   }
 
-  let bgm_sink_ = bgm_sink.clone();
-  audio::set_bgm(&bgm_sink_);
+  audio::set_bgm(&bgm_sink);
 }
