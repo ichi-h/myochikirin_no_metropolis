@@ -41,9 +41,6 @@ fn main() {
   }
 
   {
-    let bgm_sink_ = bgm_sink.clone();
-    let se_sink_ = se_sink.clone();
-
     let bell_vec = include_bytes!("../audio/bell.ogg").to_vec();
     let turn_page1_vec = include_bytes!("../audio/turnPage1.ogg").to_vec();
     let turn_page2_vec = include_bytes!("../audio/turnPage2.ogg").to_vec();
@@ -70,16 +67,16 @@ fn main() {
               },
               PlayBGM { volume } => {
                 let volume_float: f32 = volume.parse::<f32>().unwrap();
-                audio::play_bgm(&bgm_sink_, volume_float);
+                audio::play_bgm(&bgm_sink, volume_float);
               },
               ChangeBGMVolme { volume } => {
                 let volume_float: f32 = volume.parse::<f32>().unwrap();
-                bgm_sink_.set_volume(volume_float);
+                bgm_sink.set_volume(volume_float);
               },
               PlaySE { file_name, volume } => {
                 let sound_effect_ = sound_effect.clone();
 
-                let mut se_sink_lock = se_sink_.lock().unwrap();
+                let mut se_sink_lock = se_sink.lock().unwrap();
 
                 let volume_float: f32 = volume.parse::<f32>().unwrap();
                 sound_effect_.play_se(&mut se_sink_lock, &handle, file_name, volume_float);
