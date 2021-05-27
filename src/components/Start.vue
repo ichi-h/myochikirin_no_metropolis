@@ -17,7 +17,8 @@ import Images from '@/mixins/Images'
 export default {
   name: 'start',
   props: {
-    loaded: Object
+    loaded: Object,
+    error: Object
   },
   computed: {
     AppRef() {
@@ -33,6 +34,7 @@ export default {
   mounted : function() {
     let loaded = this.loaded
     let startRef = this.$refs.start
+    let error = this.error
 
     const checkBrowser = () => {
       return new Promise((resolve, reject) => {
@@ -117,6 +119,9 @@ export default {
       .then(loading)
       .then(complate)
       .catch((e) => {
+        error.msg = e
+        error.isShow = true
+
         startRef.style.background = 'none'
         startRef.innerHTML = ''
 
