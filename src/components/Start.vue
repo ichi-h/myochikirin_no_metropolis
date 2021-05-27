@@ -17,7 +17,8 @@ import Images from '@/mixins/Images'
 export default {
   name: 'start',
   props: {
-    loaded: Object
+    loaded: Object,
+    error: Object
   },
   computed: {
     AppRef() {
@@ -33,60 +34,61 @@ export default {
   mounted : function() {
     let loaded = this.loaded
     let startRef = this.$refs.start
+    let error = this.error
 
-    let jsonPromise
-    let jsonObj
-
-    const checkBrowser = function() {
+    const checkBrowser = () => {
       return new Promise((resolve, reject) => {
         let browser = window.navigator.userAgent.toLowerCase()
         if (browser.indexOf('edge') != -1
         || browser.indexOf('safari') != -1
-        || browser.indexOf('applewebkit') != -1)
-        {
+        || browser.indexOf('applewebkit') != -1) {
           resolve()
         }
         else {
-          throw 'browser error'
+          reject('browser error')
         }
       })
     }
-    
-    const p1 = async function() {
-      jsonPromise = window.__TAURI__.fs.readTextFile('./savedata/savedata.json')
+
+    const getJson = () => {
+      return new Promise((resolve) => {
+        let json = window.__TAURI__.fs.readTextFile('./savedata/savedata.json')
+        resolve(json)
+      });
     }
 
-    const p2 = async function() {
-      await jsonPromise.then(function(item) {
-        jsonObj = JSON.parse(item)
+    const loadSavedata = async (jsonStr) => {
+      let jsonObj = JSON.parse(jsonStr)
 
-        SaveData.methods.setBGMVol(jsonObj.bgmVol)
-        SaveData.methods.setSEVol(jsonObj.seVol)
-        SaveData.methods.setTextSpeed(jsonObj.textSpeed)
-        SaveData.methods.setCompleteRate(jsonObj.complateRate)
-      }).catch((e) => {
-        let array = Array(9).fill(false)
-
-        SaveData.methods.setBGMVol("0.5")
-        SaveData.methods.setSEVol("1")
-        SaveData.methods.setTextSpeed("91")
-        SaveData.methods.setCompleteRate(array)
-
-        SaveData.methods.save()
-      })
+      SaveData.methods.setBGMVol(jsonObj.bgmVol)
+      SaveData.methods.setSEVol(jsonObj.seVol)
+      SaveData.methods.setTextSpeed(jsonObj.textSpeed)
+      SaveData.methods.setCompleteRate(jsonObj.complateRate)
     }
 
-    const p3 = async function() {
+    const createSavedata = async () => {
+      let array = new Array(9).fill(false)
+
+      SaveData.methods.setBGMVol("0.5")
+      SaveData.methods.setSEVol("1")
+      SaveData.methods.setTextSpeed("91")
+      SaveData.methods.setCompleteRate(array)
+
+      SaveData.methods.save()
+    }
+
+    const finishLoad = async () => {
       loaded.bool = true
     }
 
-    const p4 = async function() {
+    const startBGM = async () => {
       window.__TAURI__.tauri.invoke({
         cmd: 'playBGM',
         volume: SaveData.methods.getBGMVol()
       })
     }
-    const p5 = async function() {
+
+    const fadein = async () => {
       let appRef = AppRef.methods.getRef()
       let appClassList = appRef.classList
 
@@ -101,17 +103,25 @@ export default {
       startRef.style.pointerEvents = 'auto'
     }
 
-    const processAll = async function() {
-      await p1()
-      await p2()
-      await p3()
-      await p4()
-      await p5()
+    const loading = async () => {
+      await getJson()
+        .then((jsonStr) => loadSavedata(jsonStr))
+        .catch(createSavedata)
+    }
+
+    const complate = async () => {
+      await finishLoad()
+      await startBGM()
+      await fadein()
     }
 
     checkBrowser()
-      .then(processAll)
-      .catch(() => {
+      .then(loading)
+      .then(complate)
+      .catch((e) => {
+        error.msg = e
+        error.isShow = true
+
         startRef.style.background = 'none'
         startRef.innerHTML = ''
 

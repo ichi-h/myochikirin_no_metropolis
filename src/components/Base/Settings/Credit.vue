@@ -4,7 +4,7 @@
       <h1>クレジット</h1>
       <div class="section">
         <h2>制作</h2>
-        <p>いっぺー</p>
+        <p><a target="_blank" rel="nofollow noopener" href="https://portfolio.ippee-music.com/">いっぺー</a></p>
       </div>
       <div class="section">
         <h2>使用素材</h2>
@@ -39,7 +39,7 @@
         <div class="item">
           <h3>BGM</h3>
           <ul class="list">
-            <li>"めうちきりんのメトロポリス" by いっぺー</li>
+            <li><a target="_blank" rel="nofollow noopener" href="https://soundcloud.com/ippee/yrxrjxqhpzi7">"めうちきりんのメトロポリス"</a> by いっぺー</li>
           </ul>
         </div>
         <div class="item">
@@ -88,6 +88,10 @@ export default {
   margin-bottom: 5rem;
 }
 
+  .section a {
+    border-bottom: 1px dashed #fbfaf5;
+  }
+
   .section h2 {
     display: inline-block;
     border-bottom: 2px solid #fbfaf5;
@@ -124,6 +128,5 @@ export default {
 
       .list li > a {
         font-size: 2rem;
-        border-bottom: 1px dashed #fbfaf5;
       }
 </style>

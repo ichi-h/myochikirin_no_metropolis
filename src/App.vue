@@ -5,10 +5,10 @@
       ref="app"
       :style="'background-image: url(' + Images.bg + ');'"
     >
-      <router-view :index="index" :loaded="loaded"></router-view>
+      <router-view :index="index" :loaded="loaded" :error="error"></router-view>
 
       <div class="msg" ref="msg">
-        <msg></msg>
+        <msg v-if="error.isShow" :error="error"></msg>
       </div>
     </div>
 
@@ -37,7 +37,11 @@ export default {
   data() {
     return {
       index: { i: Number },
-      loaded: { bool: false }
+      loaded: { bool: false },
+      error: {
+        isShow: false,
+        msg: String
+      }
     }
   },
   mounted: function() {
@@ -99,19 +103,5 @@ export default {
   transform: translateX(-2rem) translateY(-2rem);
   
   transition: 1s;
-}
-
-.msg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-top: 50vh;
-  transform: translateY(-50%);
-
-  text-align: center;
-
-  width: 100vw;
-
-  visibility: hidden;
 }
 </style>
