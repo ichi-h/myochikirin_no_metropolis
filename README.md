@@ -5,6 +5,8 @@
 公式サイト: [https://myochikirin.ippee-music.com/](https://myochikirin.ippee-music.com/)  
 公式サイトリポジトリ: [https://github.com/ippee/novel_game_hp](https://github.com/ippee/novel_game_hp)  
 
+技術解説記事: [https://ippee-music.com/tech/myochikirin/](https://ippee-music.com/tech/myochikirin/)
+
 ![title](./assets/title.jpg)  
 
 ## 使用技術
