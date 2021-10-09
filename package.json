@@ -1,6 +1,6 @@
 {
   "name": "novel_game_tauri_vue",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A novel game project of tauri(Rust) and Vue.js",
   "author": "ippee <ippee.music@gmail.com>",
   "private": true,
