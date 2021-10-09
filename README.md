@@ -66,8 +66,8 @@
 
 ### Windows
 
-- OS: Windows 10 Home
+- OS: Windows 11 Home
 
 ### Mac
 
-- OS: Catalina 10.15.7
+- OS: Big Sur 11.6
