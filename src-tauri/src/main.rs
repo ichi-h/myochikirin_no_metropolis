@@ -9,15 +9,38 @@ mod audio;
 use std::sync::{Arc, Mutex};
 use std::io::Cursor;
 
+fn set_app_dir() {
+  let pwd = std::env::current_exe().expect("could not get current app directory");
+  let pwd_string = format!("{:?}", pwd).to_string();
+
+  let pwd_rev = pwd_string.chars().rev().collect::<String>();
+  let before = "MacOS/myochikirin_no_metropolis".chars().rev().collect::<String>();
+  let after = "Resources".chars().rev().collect::<String>();
+
+  let savedata_dir_rev = pwd_rev.replacen(&*before, &*after, 1);
+  let mut savedata_dir = savedata_dir_rev.chars().rev().collect::<String>();
+  savedata_dir.retain(|c| c != '"');
+
+  let path = std::path::Path::new(&*savedata_dir);
+  std::env::set_current_dir(path).expect("could not move Resources directory");
+}
+
 fn main() {
+  // set_app_dir();
+  // uncomment this on the release build
+
   let (_stream, handle) = rodio::OutputStream::try_default().unwrap();
   let bgm_sink = Arc::new(rodio::Sink::try_new(&handle).unwrap());
   let se_sink = Arc::new(Mutex::new(rodio::Sink::try_new(&handle).unwrap()));
 
   {
     let bgm_sink_ = bgm_sink.clone();
-    let se_sink_ = se_sink.clone();
+    tauri::spawn(move || {
+      audio::set_bgm(&bgm_sink_);
+    })
+  }
 
+  {
     let bell_vec = include_bytes!("../audio/bell.ogg").to_vec();
     let turn_page1_vec = include_bytes!("../audio/turnPage1.ogg").to_vec();
     let turn_page2_vec = include_bytes!("../audio/turnPage2.ogg").to_vec();
@@ -28,48 +51,42 @@ fn main() {
       turn_page2: Cursor::new(turn_page2_vec),
     };
 
-    let _ = std::thread::spawn(move || {
-      tauri::AppBuilder::new()
-        .invoke_handler(move |_webview, arg| {
-          use cmd::Cmd::*;
-          match serde_json::from_str(arg) {
-            Err(e) => {
-              Err(e.to_string())
-            }
-            Ok(command) => {
-              match command {
-                // definitions for your custom commands from Cmd here
-                MyCustomCommand { arg } => {
-                  //  your command code
-                  println!("{}", arg);
-                },
-                PlayBGM { volume } => {
-                  let volume_float: f32 = volume.parse::<f32>().unwrap();
-                  audio::play_bgm(&bgm_sink_, volume_float);
-                },
-                ChangeBGMVolme { volume } => {
-                  let volume_float: f32 = volume.parse::<f32>().unwrap();
-                  bgm_sink_.set_volume(volume_float);
-                },
-                PlaySE { file_name, volume } => {
-                  let sound_effect_ = sound_effect.clone();
-
-                  let mut se_sink_lock = se_sink_.lock().unwrap();
-
-                  let volume_float: f32 = volume.parse::<f32>().unwrap();
-                  sound_effect_.play_se(&mut se_sink_lock, &handle, file_name, volume_float);
-                },
-              }
-              Ok(())
-            }
+    tauri::AppBuilder::new()
+      .invoke_handler(move |_webview, arg| {
+        use cmd::Cmd::*;
+        match serde_json::from_str(arg) {
+          Err(e) => {
+            Err(e.to_string())
           }
-        })
-        .build()
-        .run();
-      
-      std::process::exit(0);
-    });
-  }
+          Ok(command) => {
+            match command {
+              // definitions for your custom commands from Cmd here
+              MyCustomCommand { arg } => {
+                //  your command code
+                println!("{}", arg);
+              },
+              PlayBGM { volume } => {
+                let volume_float: f32 = volume.parse::<f32>().unwrap();
+                audio::play_bgm(&bgm_sink, volume_float);
+              },
+              ChangeBGMVolme { volume } => {
+                let volume_float: f32 = volume.parse::<f32>().unwrap();
+                bgm_sink.set_volume(volume_float);
+              },
+              PlaySE { file_name, volume } => {
+                let sound_effect_ = sound_effect.clone();
 
-  audio::set_bgm(&bgm_sink);
+                let mut se_sink_lock = se_sink.lock().unwrap();
+
+                let volume_float: f32 = volume.parse::<f32>().unwrap();
+                sound_effect_.play_se(&mut se_sink_lock, &handle, file_name, volume_float);
+              },
+            }
+            Ok(())
+          }
+        }
+      })
+      .build()
+      .run();
+  }
 }
