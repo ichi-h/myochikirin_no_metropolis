@@ -8,6 +8,8 @@ import '@/assets/css/style.css'
 
 Vue.config.productionTip = false
 
+document.oncontextmenu = function () {　return false;　}
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

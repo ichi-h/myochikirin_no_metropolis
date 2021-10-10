@@ -1,6 +1,6 @@
 [package]
 name = "myochikirin_no_metropolis"
-version = "1.0.2"
+version = "1.0.3"
 description = "Game"
 authors = [ "Ippee" ]
 license = ""
