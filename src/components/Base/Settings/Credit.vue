@@ -39,7 +39,7 @@
         <div class="item">
           <h3>BGM</h3>
           <ul class="list">
-            <li>"めうちきりんのメトロポリス" | いっぺー</li>
+            <li><a href="https://soundcloud.com/xvahmbk5syft/p0owqmeiguu1" target="_blank" rel="nofollow noopener">"めうちきりんのメトロポリス"</a> | いっぺー</li>
           </ul>
         </div>
         <div class="item">
