@@ -4,7 +4,7 @@
       <h1>クレジット</h1>
       <div class="section">
         <h2>制作</h2>
-        <p><a target="_blank" rel="nofollow noopener" href="https://portfolio.ippee-music.com/">いっぺー</a></p>
+        <p>いっぺー</p>
       </div>
       <div class="section">
         <h2>使用素材</h2>
@@ -12,43 +12,43 @@
           <h3>画像</h3>
           <h4>Canva</h4>
           <ul class="list">
-            <li><a target="_blank" rel="nofollow noopener" href="https://www.canva.com/photos/MADGv5rcu7M-woman-walking-in-the-street-during-night-time/">"夜の間に通りを歩いている女性"</a> by Aleksandar Pasaric</li>
-            <li><a target="_blank" rel="nofollow noopener" href="https://www.canva.com/photos/MAEEWnGpeF8-man-looking-out-of-window/">"Man looking out of window"</a> by ozgurdonmaz</li>
-            <li><a target="_blank" rel="nofollow noopener" href="https://www.canva.com/photos/MADesfDpSrk-phases-of-the-moon-moon-lunar-cycle-/">"月の満ち欠け。月の月の周期。"</a> by Allexxandar</li>
-            <li><a target="_blank" rel="nofollow noopener" href="https://www.canva.com/photos/MADaAx-NWHE-milky-way-/">"天の川！"</a> by Sahil Malhotra</li>
-            <li><a target="_blank" rel="nofollow noopener" href="https://www.canva.com/photos/MAC5MsKKatU-cat-on-the-moon-background/">"Cat on the moon background"</a> by ks2009q</li>
+            <li><a target="_blank" rel="nofollow noopener" href="https://www.canva.com/photos/MADGv5rcu7M-woman-walking-in-the-street-during-night-time/">"夜の間に通りを歩いている女性"</a> | Aleksandar Pasaric 様</li>
+            <li><a target="_blank" rel="nofollow noopener" href="https://www.canva.com/photos/MAEEWnGpeF8-man-looking-out-of-window/">"Man looking out of window"</a> | ozgurdonmaz 様</li>
+            <li><a target="_blank" rel="nofollow noopener" href="https://www.canva.com/photos/MADesfDpSrk-phases-of-the-moon-moon-lunar-cycle-/">"月の満ち欠け。月の月の周期。"</a> | Allexxandar 様</li>
+            <li><a target="_blank" rel="nofollow noopener" href="https://www.canva.com/photos/MADaAx-NWHE-milky-way-/">"天の川！"</a> | Sahil Malhotra 様</li>
+            <li><a target="_blank" rel="nofollow noopener" href="https://www.canva.com/photos/MAC5MsKKatU-cat-on-the-moon-background/">"Cat on the moon background"</a> | ks2009q 様</li>
           </ul>
           <h4>Unsplash</h4>
           <ul class="list">
-            <li><a target="_blank" rel="nofollow noopener" href="https://unsplash.com/photos/_b4ppn1Ssgw?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">"Downtown Park, Bellevue, United States"</a> by Elisha Terada</li>
-            <li><a target="_blank" rel="nofollow noopener" href="https://unsplash.com/photos/F-pSZO_jeE8?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">"429 Cornelius Rd, Cerulean, KY 42215, USA, United States"</a> by Jongsun Lee</li>
-            <li><a target="_blank" rel="nofollow noopener" href="https://unsplash.com/photos/NwDSEPXr9og?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">"Downtown Bellevue at Night, Bellevue, United States"</a> by Dylan Mullins</li>
+            <li><a target="_blank" rel="nofollow noopener" href="https://unsplash.com/photos/_b4ppn1Ssgw?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">"Downtown Park, Bellevue, United States"</a> | Elisha Terada 様</li>
+            <li><a target="_blank" rel="nofollow noopener" href="https://unsplash.com/photos/F-pSZO_jeE8?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">"429 Cornelius Rd, Cerulean, KY 42215, USA, United States"</a> | Jongsun Lee 様</li>
+            <li><a target="_blank" rel="nofollow noopener" href="https://unsplash.com/photos/NwDSEPXr9og?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink">"Downtown Bellevue at Night, Bellevue, United States"</a> | Dylan Mullins 様</li>
           </ul>
           <h4>写真AC</h4>
           <ul class="list">
-            <li><a target="_blank" rel="nofollow noopener" href="https://www.photo-ac.com/main/detail/1828030?title=%E3%83%90%E3%83%BC%E3%82%AB%E3%82%A6%E3%83%B3%E3%82%BF%E3%83%BC&searchId=2565206629">"バーカウンター"</a> by 河童</li>
+            <li><a target="_blank" rel="nofollow noopener" href="https://www.photo-ac.com/main/detail/1828030?title=%E3%83%90%E3%83%BC%E3%82%AB%E3%82%A6%E3%83%B3%E3%82%BF%E3%83%BC&searchId=2565206629">"バーカウンター"</a> | 河童 様</li>
           </ul>
         </div>
         <div class="item">
           <h3>フォント</h3>
           <ul class="list">
-            <li><a href="https://moji-waku.com/pigmo01/" target="_blank" rel="nofollow noopener">"ピグモ 01"</a> by もじワク研究</li>
-            <li><a href="http://togoshi-font.osdn.jp/" target="_blank" rel="nofollow noopener">"戸越ゴシック"</a> by mshio</li>
+            <li><a href="https://moji-waku.com/pigmo01/" target="_blank" rel="nofollow noopener">"ピグモ 01"</a> | もじワク研究 様</li>
+            <li><a href="http://togoshi-font.osdn.jp/" target="_blank" rel="nofollow noopener">"戸越ゴシック"</a> | mshio 様</li>
           </ul>
         </div>
         <div class="item">
           <h3>BGM</h3>
           <ul class="list">
-            <li><a target="_blank" rel="nofollow noopener" href="https://soundcloud.com/ippee/yrxrjxqhpzi7">"めうちきりんのメトロポリス"</a> by いっぺー</li>
+            <li>"めうちきりんのメトロポリス" | いっぺー</li>
           </ul>
         </div>
         <div class="item">
           <h3>SE</h3>
           <h4>Freesound</h4>
           <ul class="list">
-            <li><a href="https://freesound.org/people/Zott820/sounds/209580/" target="_blank" rel="nofollow noopener">"Entrance Bell"</a> by Zott820</li>
-            <li><a href="https://freesound.org/people/davidbain/sounds/136778/" target="_blank" rel="nofollow noopener">"Page Turn"</a> by davidbain</li>
-            <li><a href="https://freesound.org/people/exterminat/sounds/164806/" target="_blank" rel="nofollow noopener">"Page turns and book close/open"</a> by exterminat</li>
+            <li><a href="https://freesound.org/people/Zott820/sounds/209580/" target="_blank" rel="nofollow noopener">"Entrance Bell"</a> | Zott820 様</li>
+            <li><a href="https://freesound.org/people/davidbain/sounds/136778/" target="_blank" rel="nofollow noopener">"Page Turn"</a> | davidbain 様</li>
+            <li><a href="https://freesound.org/people/exterminat/sounds/164806/" target="_blank" rel="nofollow noopener">"Page turns and book close/open"</a> | exterminat 様</li>
           </ul>
         </div>
       </div>

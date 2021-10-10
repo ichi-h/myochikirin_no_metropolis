@@ -1,8 +1,15 @@
 <template>
   <div class="base" ref="base">
     <home ref="base-home" v-if="selector.value === 'base-home'" :index="index"></home>
-    <gallery ref="base-gallery" v-if="selector.value === 'base-gallery'"></gallery>
+    <gallery
+      ref="base-gallery"
+      v-if="selector.value === 'base-gallery'"
+      :isShow="isShow"
+      :imageData="imageData"
+    ></gallery>
     <settings ref="base-settings" v-if="selector.value === 'base-settings'"></settings>
+
+    <popup v-if="isShow.value" :isShow="isShow" :imageData="imageData"></popup>
 
     <navbar :selector="selector"></navbar>
   </div>
@@ -13,12 +20,13 @@ import AppRef from '@/mixins/AppRef'
 import Home from './Base/Home'
 import Gallery from './Base/Gallery'
 import Settings from './Base/Settings'
+import Popup from './Base/Popup'
 import Navbar from './Navbar'
 
 export default {
   name: 'base',
   props: { index: Object },
-  components: { Home, Gallery, Settings, Navbar },
+  components: { Home, Gallery, Settings, Popup, Navbar },
   computed: {
     AppRef() {
       return AppRef
@@ -26,7 +34,9 @@ export default {
   },
   data() {
     return {
-      selector: { value: 'base-home'}
+      selector: { value: 'base-home'},
+      isShow: { value: false },
+      imageData: { value: "" }
     }
   },
   watch: {
