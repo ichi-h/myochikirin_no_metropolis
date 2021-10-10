@@ -89,7 +89,6 @@ export default {
       const speed = Text.methods.getTrueTextSpeed()
 
       const txt_array = Text.methods.textToArray('メッセージ表示テストメッセージ表示テスト')
-      console.log(txt_array);
 
       pText.innerHTML = ''
 
