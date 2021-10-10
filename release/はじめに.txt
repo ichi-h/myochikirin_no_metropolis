@@ -2,12 +2,12 @@
 
 ## 説明
 - タイトル: めうちきりんのメトロポリス
-- バージョン: v1.0.2
+- バージョン: v1.0.3
 - 作者: いっぺー
 - 使用技術: Vue.js, tauri(Rust), etc.
 - URL:
-  - HP: https://myochikirin.ippee-music.com
-  - ソースコード: https://github.com/ippee/novel_game
+  - HP: https://myochikirin-hp-403bf.web.app/
+  - ソースコード: https://github.com/ippee/myochikirin_no_metropolis
 
 
 
@@ -56,10 +56,10 @@ Macの場合は、.appの右クリックから「パッケージの内容を表�
 
 ## 開発環境
 ### Windows
-- OS: Windows 10 Home
+- OS: Windows 11 Home
 
 ### Mac
-- OS: Catalina 10.15.7
+- OS: Big Sur 11.6
 
 
 
