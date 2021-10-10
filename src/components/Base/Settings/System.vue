@@ -179,8 +179,6 @@ input[type=range] {
       background-color: #fbfaf5;
       border-radius: 50%;
       cursor: pointer;
-
-      margin-top: 1.1rem;
     }
   }
 
