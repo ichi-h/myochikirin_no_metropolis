@@ -89,7 +89,6 @@ export default {
       const speed = Text.methods.getTrueTextSpeed()
 
       const txt_array = Text.methods.textToArray('メッセージ表示テストメッセージ表示テスト')
-      console.log(txt_array);
 
       pText.innerHTML = ''
 
@@ -153,7 +152,16 @@ input[type=range] {
     outline: none;
   }
 
-  input[type=range]::-webkit-slider-thumb,
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 2.8rem;
+    height: 2.8rem;
+    margin-top: -1.4rem;
+    background-color: #fbfaf5;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
   input[type=range]::-ms-thumb {
     width: 2.8rem;
     height: 2.8rem;
@@ -187,8 +195,8 @@ input[type=range] {
   input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
     cursor: pointer;
-    height: 2em;
-    border-bottom: 2px solid #fbfaf5;
-    background-color: transparent;
+    height: 0;
+    border: 1px solid #fbfaf5;
+    background-color: #fbfaf5;
   }
 </style>
